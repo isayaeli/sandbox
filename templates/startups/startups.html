@@ -1,0 +1,507 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Plumar | Start-ups</title>
+{% endblock title %}
+
+{% block header %}
+{% endblock header %}
+
+
+{% block contents %}
+{% include 'includes/nav.html' %}
+        <!-- Breadcrumb Section Start -->
+        <div class="breadcrumb-section section bg_color--5 pt-60 pt-sm-50 pt-xs-40 pb-60 pb-sm-50 pb-xs-40">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-breadcrumb-content">
+                            <ul class="page-breadcrumb">
+                                <li><a href="{% url 'home' %}">Home</a></li>
+                                <li>Startups</li>
+                            </ul>
+                            <h1>Startups</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Breadcrumb Section Start -->
+
+        <!-- Employers Listing Section Start -->
+        <div class="employers-listing-section section bg_color--5 pb-120 pb-lg-100 pb-md-75 pb-sm-60 pb-xs-50">
+            <div class="container">
+                <div class="row no-gutters">
+
+                    <div class="col-lg-4 order-lg-1 order-2 pr-55 pr-md-15 pr-sm-15 pr-xs-15">
+                        <div class="sidebar-wrapper-two mt-sm-40 mt-xs-40">
+                            <div class="common-sidebar-widget sidebar-two">
+                                <h2 class="sidebar-title">Find A Startup</h2>
+                                <div class="sidebar-search-form-two">
+                                    <form method="get" >
+                                        <div class="input-group">
+                                            <input type="text" name="q" placeholder="Search...">
+                                            <i class="lnr lnr-magnifier"></i>    
+                                        </div>
+                                        <button type="submit" class="ht-btn theme-btn theme-btn-two w-100">Search</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- <div class="common-sidebar-widget sidebar-two">
+                                <h2 class="sidebar-title">Search by first letter</h2>
+                                <div class="sidebar-search-letter">
+                                    <ul class="search-by-first-letter">
+                                        <li><a href="?q=A">A</a></li>
+                                        <li><a href="?q=B">B</a></li>
+                                        <li><a href="?q=C">C</a></li>
+                                        <li><a href="?q=D">D</a></li>
+                                        <li><a href="?q=E">E</a></li>
+                                        <li><a href="?q=F">F</a></li>
+                                        <li><a href="?q=G">G</a></li>
+                                        <li><a href="?q=H">H</a></li>
+                                        <li><a href="?q=I">I</a></li>
+                                        <li><a href="?q=J">J</a></li>
+                                        <li><a href="?q=K">K</a></li>
+                                        <li><a href="?q=L">L</a></li>
+                                        <li><a href="?q=M">M</a></li>
+                                        <li><a href="?q=N">N</a></li>
+                                        <li><a href="?q=O">O</a></li>
+                                        <li><a href="?q=P">P</a></li>
+                                        <li><a href="?q=Q">Q</a></li>
+                                        <li><a href="?q=R">R</a></li>
+                                        <li><a href="?q=S">S</a></li>
+                                        <li><a href="?q=T">T</a></li>
+                                        <li><a href="?q=T">U</a></li>
+                                        <li><a href="?q=V">V</a></li>
+                                        <li><a href="?q=W">W</a></li>
+                                        <li><a href="?q=X">X</a></li>
+                                        <li><a href="?q=Y">Y</a></li>
+                                        <li><a href="?q=Z">Z</a></li>
+                                        <li><a href="#">0-9</a></li>
+                                        <li><a href="#">#</a></li>
+                                    </ul>
+                                </div>
+                            </div> -->
+                            <div class="common-sidebar-widget sidebar-two">
+                                <h2 class="sidebar-title">Location</h2>
+                                <div class="sidebar-category">
+                                    <form method="get">
+                                        <div class="input-group">
+                                            <select class="nice-select wide" name="q" onchange="this.form.submit()" >
+                                                <option value="1">Choose Location</option>
+                                                <option value="Dar es salaam">Dar es salaam</option>
+                                                <option value="Arusha">Arusha</option>
+                                                <option value="Tanga">Tanga</option>
+                                                <option value="Kilimanjaro">Kilimanjaro</option>
+                                                <option value="Pwani">Pwani</option>
+                                                <option value="Dodoma">Dodoma</option>
+                                                <option value="Singida">Singida</option>
+                                                <option value="Tabora">Tabora</option>
+                                                <option value="Mwanza">Mwanza</option>
+                                                <option value="Shinyanga">Shinyanga</option>
+                                                <option value="Mara">Mara</option>
+                                                <option value="Rukwa">Rukwa</option>
+                                                <option value="Kagera">Kagera</option>
+                                                <option value="Katavi">Katavi</option>
+                                                <option value="Njombe">Njombe</option>
+                                                <option value="Iringa">Iringa</option>
+                                                <option value="Mwanza">Mwanza</option>
+                                                <option value="Mbeya">Mbeya</option>
+                                                <option value="Morogoro">Morogoro</option>
+                                            </select>
+                                        </div>
+                                        <!-- <button type="submit" class="ht-btn theme-btn theme-btn-two w-100">Search</button> -->
+                                    </form>
+                                </div>
+                                <!-- <div class="sidebar-location-range mt-10">
+                                    <div class="location-range">
+                                        <label for="amount">Radius:</label>
+                                        <input type="text" id="amount" readonly>
+                                    </div>
+                                    <div id="slider-range-min"></div>
+                                </div> -->
+                            </div>
+                            <div class="common-sidebar-widget sidebar-two">
+                                <h2 class="sidebar-title">Category</h2>
+                                <div class="sidebar-category">
+                                   <form  method="get">
+                                    <select class="nice-select wide" name="q" onchange="this.form.submit()">
+                                        <option value="1">Choose Category</option>
+                                        <option value="accounting">Accounting</option>
+                                        <option value="Broadcasting">Broadcasting</option>
+                                        <option value="Customer Service">Customer Service</option>
+                                        <option value="Digital Marketing">Digital Marketing</option>
+                                        <option value="Finance & Accounting">Finance & Accounting</option>
+                                        <option value="Game Mobile">Game Mobile</option>
+                                        <option value="Graphics & Design">Graphics & Design</option>
+                                        <option value="Human">Human Resources</option>
+                                        <option value="Medical Doctor">Medical Doctor</option>
+                                        <option value="Restaurant">Restaurant</option>
+                                        <option value="Sale & Marketing">Sale & Marketing</option>
+                                        <option value="Sale Assistance">Sale Assistance</option>
+                                        <option value="sales & Analitycs">Science & Analitycs</option>
+                                        <option value="Teachers">Teachers</option>
+                                        <option value="Software">Web & Software Dev</option>
+                                        <option value="Writing & Translations">Writing & Translations</option>
+                                    </select>
+                                   </form>
+                                </div>
+                            </div>
+                            <!-- <div class="common-sidebar-widget sidebar-two">
+                                <h2 class="sidebar-title">Rating</h2>
+                                <ul class="sidebar-cbx-list">
+                                    <li>
+                                        <div class="filter-name-item">
+                                            <input type="checkbox" name="expericence" id="filter-cbx">
+                                            <label for="filter-cbx"> 5 Star</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="filter-name-item">
+                                            <input type="checkbox" name="expericence" id="filter-cbx-two">
+                                            <label for="filter-cbx-two"> 4 Star</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="filter-name-item">
+                                            <input type="checkbox" name="expericence" id="filter-cbx-three">
+                                            <label for="filter-cbx-three">3 Star</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div> -->
+                            <!-- <div class="common-sidebar-widget sidebar-two">
+                                <h2 class="sidebar-title">Skills</h2>
+                                <ul class="sidebar-tag">
+                                    <li><a href="#">Account Manager</a></li>
+                                    <li><a href="#">Administrative</a></li>
+                                    <li><a href="#">Android</a></li>
+                                    <li><a href="#">Angular</a></li>
+                                    <li><a href="#">app</a></li>
+                                    <li><a href="#">ASP.NET</a></li>
+                                    <li><a href="#">Automotive</a></li>
+                                    <li><a href="#">Banner</a></li>
+                                </ul>
+                            </div> -->
+                            <div class="common-sidebar-widget sidebar-two">
+                                <div class="sidbar-image">
+                                    <a href="#">
+                                        <img src="assets/images/banner/ads-three.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8 order-lg-2 order-1">
+                        <div class="filter-form">
+                            <div class="result-sorting">
+                                <div class="total-result">
+                                    
+                                    <span class="total">{{startup_count}}</span>
+                                   
+                                    Job{{startup_count|pluralize}} Available
+                                </div>
+                                <div class="form-left">
+                                    <div class="sort-by">
+                                        <form action="#">
+                                            <label class="text-sortby">Sort by:</label>
+                                            <select class="nice-select">
+                                                <option value="1">Title</option>
+                                                <option value="2">Date</option>
+                                                <option value="3">Salary</option>
+                                            </select>
+                                        </form>
+                                    </div>
+                                    <div class="layout-switcher">
+                                        <ul class="nav">
+                                            <li><a class="active show" data-toggle="tab" href="#list"><i class="fa fa-list"></i></a></li>
+                                            <li><a data-toggle="tab" href="#grid"><i class="fa fa-th"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-content">
+                            <div id="list" class="tab-pane fade show active">
+                                <div class="row">
+                                    {% for data in startup %}
+                                    <div class="col-lg-12 mb-20">
+                                        <!-- Single Job Start  -->
+                                        <div class="single-employer-list style-two">
+                                            <div class="info-top align-items-start">
+                                                <div class="employer-image">
+                                                    <a href="{% url 'startup_details' data.id %}">
+                                                        {% if data.logo %}
+                                                        <img src="{{ data.logo.url }}" alt="logo">
+                                                        {% endif %}
+                                                    </a>
+                                                </div>
+                                                <div class="employer-info">
+                                                    <div class="employer-info-inner">
+                                                        <div class="employer-info-top">
+                                                            <div class="saveJob for-listing">
+                                                                <button class=" mr-20 btn btn-warning btn-sm font-weight-bold  text-dark">
+                                                                    {% if data.get_opportunities.count == 1  %}
+                                                                    {{data.get_opportunities.count}}  Opportunity
+                                                                    {% else %}
+                                                                    {{data.get_opportunities.count}} Opportunities
+                                                                    {% endif %}
+                                                                </button>
+                                                                {% if user.is_authenticated %}
+                                                                <form   method="post" action="{% url 'follow' %}">
+                                                                    {% if request.user in data.followers.all %}
+                                                                        <button value="{{data.id}}" id="follow" class="btn btn-warning btn-sm rounded-pill text-white font-weight-bold">
+                                                                         <span id="follow{{data.id}}" class="text-dark" >Following</span>
+                                                                        </button>
+                                                                    {% else %}
+                                                                        <button value="{{data.id}}" id="follow" class=" btn btn-warning btn-sm rounded-pill text-white font-weight-bold">
+                                                                            <span id="follow{{data.id}}" class="text-white" >Follow</span>
+                                                                        </button>
+                                                                    {% endif %}
+                                                                </form>
+                                                                {% else %}
+                                                                <button class=" follow btn btn-warning btn-sm rounded-pill text-white" >Follow</button>
+                                                                {% endif %}
+                                                            </div>
+                                                            <div class="title-name">
+                                                                <h3 class="employer-title">
+                                                                    <a href="{% url 'startup_details' data.id %}">{{ data.name }}</a>
+                                                                </h3>
+                                                                <div class="employer-rate">
+                                                                    <div class="star">
+                                                                        {% include 'includes/rating_for_list_view.html' %}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="employer-meta">
+                                                            <div class="field-map"><i class="lnr lnr-map-marker"></i>{{  data.location }}</div>
+                                                        </div>
+                                                        <div class="field-description">
+                                                            <p>{{ data.description|truncatechars:150 }} <a href="{% url 'startup_details' data.id %}">More</a></p>
+                                                        </div>
+                                                        <div class="employer-bottom">
+                                                            <div class="employer-skill-tag">
+                                                                {% for data in data.get_required_skills|slice:5 %}
+                                                                    <a href="#">{{  data.skill}}</a>
+                                                                {% endfor %}
+                                                                {% if  data.get_required_skills.count > 5 %}
+                                                                    <a href="{% url 'startup_details' data.id %}">More Skills</a>
+                                                                {% endif %}
+                                                            </div>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Single Job End -->
+                                    </div>
+                                    {% empty %}
+                                    <span class="text-danger font-weight-bolder ml-5" >No result for found</span>
+                                    {% endfor %}
+            
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <nav aria-label="Page navigation example">
+                                            {% if startup.has_other_pages %}
+                                                <ul class="pagination">
+                                                    {% if startup.has_previous %}
+                                                        <li class="page-item">
+                                                            <a class="page-link text-dark" href="?page={{ startup.previous_page_number }}" aria-label="Previous">
+                                                            <span aria-hidden="true">&laquo;</span>
+                                                            </a>
+                                                        </li>
+                                                    {% else %}
+                                                    <li class="page-item disabled text-center"></li>
+                                                    {% endif %}
+    
+                                                    {% for i in startup.paginator.page_range %}
+                                                        {% if startup.number == i %}
+                                                            <li class="page-item "><a class="page-link  bg-warning text-dark" href="?page={{i}}">{{ i }}</a></li>
+                                                        {% else %}
+                                                            <li class="page-item"><a class="page-link text-dark" href="?page={{i}}">{{ i }}</a></li>
+                                                        {% endif %}
+                                                    {% endfor %}
+    
+                                                    {% if startup.has_next %}
+                                                        <li class="page-item">
+                                                            <a class="page-link text-dark" href="?page={{ startup.next_page_number }}" aria-label="Next">
+                                                            <span aria-hidden="true">&raquo;</span>
+                                                            </a>
+                                                        </li>
+                                                    {% else %}
+                                                    <li class="page-item disabled text-center"></li>
+                                                    {% endif %}
+                                                </ul>
+                                            {% endif %}
+                                          </nav>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="grid" class="tab-pane fade">
+                                <div class="row">
+                                    {% for data in startup %}
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 mb-30">
+                                        <!-- Single Employer Item Start -->
+                                        <div class="employer-item border">
+                                            <div class="saveJob for-grid">
+                                                {% if user.is_authenticated %}
+                                                <form   method="post" action="{% url 'follow' %}">
+                                                    {% csrf_token %}
+                                                    {% if request.user in data.followers.all %}
+                                                        <button value="{{data.id}}" id="follow" class="btn btn-warning btn-sm rounded-pill text-white font-weight-bold">
+                                                         <span id="follow{{data.id}}" class="text-dark" >Following</span>
+                                                        </button>
+                                                    {% else %}
+                                                        <button value="{{data.id}}" id="follow" class=" btn btn-warning btn-sm rounded-pill text-white font-weight-bold">
+                                                            <span id="follow{{data.id}}" class="text-white" >Follow</span>
+                                                        </button>
+                                                    {% endif %}
+                                                </form>
+                                                {% else %}
+                                                <button class=" follow btn btn-warning btn-sm rounded-pill text-white" >Follow</button>
+                                                {% endif %}
+                                            </div>
+                                            <div class="employer-image">
+                                                {% if data.logo %}
+                                                <a href="{% url 'startup_details' data.id %}"><img src="{{ data.logo.url }}" alt=""></a>
+                                                {% endif %}
+                                            </div>
+                                            <div class="employer-info-top text-center">
+                                                <span class="employer-location"><i class="lnr lnr-map-marker"></i>{{ data.location }}</span>
+                                                <h3 class="employer-name"><a href="{% url 'startup_details' data.id %}">{{ data.name }}</a></h3>
+                                                <div class="employer-info-rate  text-center">
+                                                    <div class="star">
+                                                        {% include 'includes/rating_for_list_view.html' %}
+                                                    </div>
+                                                    
+                                                </div>
+                                                <a href="{% url 'startup_details' data.id %}" class="font-weight-bold btn btn-warning btn-sm">
+                                                    {% if data.get_opportunities.count == 1  %}
+                                                    {{data.get_opportunities.count}}  Opportunity
+                                                    {% else %}
+                                                    {{data.get_opportunities.count}} Opportunities
+                                                    {% endif %}
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- Single Employer Item End -->
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <nav aria-label="Page navigation example">
+                                            {% if startup.has_other_pages %}
+                                                <ul class="pagination">
+                                                    {% if startup.has_previous %}
+                                                        <li class="page-item">
+                                                            <a class="page-link text-dark" href="?page={{ startup.previous_page_number }}" aria-label="Previous">
+                                                            <span aria-hidden="true">&laquo;</span>
+                                                            </a>
+                                                        </li>
+                                                    {% else %}
+                                                    <li class="page-item disabled text-center"></li>
+                                                    {% endif %}
+    
+                                                    {% for i in startup.paginator.page_range %}
+                                                        {% if startup.number == i %}
+                                                            <li class="page-item "><a class="page-link  bg-warning text-dark" href="?page={{i}}">{{ i }}</a></li>
+                                                        {% else %}
+                                                            <li class="page-item"><a class="page-link text-dark" href="?page={{i}}">{{ i }}</a></li>
+                                                        {% endif %}
+                                                    {% endfor %}
+    
+                                                    {% if startup.has_next %}
+                                                        <li class="page-item">
+                                                            <a class="page-link text-dark" href="?page={{ startup.next_page_number }}" aria-label="Next">
+                                                            <span aria-hidden="true">&raquo;</span>
+                                                            </a>
+                                                        </li>
+                                                    {% else %}
+                                                    <li class="page-item disabled text-center"></li>
+                                                    {% endif %}
+                                                </ul>
+                                            {% endif %}
+                                          </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Employers Listing Section End -->
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            function updateRangeInput(elem) {
+                $(elem).next().val($(elem).val());
+            }
+            
+            $(document).on('click', '#follow', function(e){
+                e.preventDefault();
+
+                var pk = $(this).attr('value');
+                
+                $.ajax({
+                    type:'POST',
+                    url:'{% url "follow" %}',
+                    data:{
+                        'id':pk,
+                        'csrfmiddlewaretoken':'{{csrf_token}}'
+                    },
+                    success:function(response){
+                        console.log(response)
+
+                        // for toggling icon on list view
+                        // $("#mark"+pk).toggleClass('far fa-bookmark fas fa-bookmark')
+                        $('#follow'+pk).toggleClass('text-white text-dark')
+                        $('#follow2'+pk).toggleClass('text-white text-dark')
+                        
+                        //for toggling icon on grid view
+                        // $("#mark2"+pk).toggleClass('far fa-bookmark fas fa-bookmark')
+                       
+                        // for grid  view on to change text on successfull post
+                        if($('#follow'+pk).text() == 'Follow'){
+                            $('#follow'+pk).text('Following')
+                        }
+                        else {
+                            $('#follow'+pk).text('Follow')
+                        }
+
+                        if($('#follow2'+pk).text() == 'Follow'){
+                            $('#follow2'+pk).text('Following')
+                        }
+                        else {
+                            $('#follow2'+pk).text('Follow')
+                        }
+                
+                
+                    },
+                    errror: function(rs,e){
+                        console.log(rs.responseText);
+                    }
+                })
+            })
+
+            $('.follow').on('click', function(){
+                swal({
+                    title: 'Your have to be a registered user to follow a startup',
+                    text: 'if you have an account login to follow this startup, else register first',
+                    icon: "info",
+                    buttons: false,
+                    timer: 5000,
+                    
+                })
+            })
+        </script>
+{% endblock contents %}

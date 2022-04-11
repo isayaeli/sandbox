@@ -1,0 +1,32 @@
+{% extends 'dash/main.html' %}
+
+{% load static %}
+
+{% block contents %}
+<style>
+    details{
+        display: none;
+    }
+</style>
+
+    <!-- Page-header end -->
+    <div class="pcoded-inner-content">
+        <!-- Main-body start -->
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- Page-body start -->
+                <div class="page-body">
+                    <div class="row">
+                     <div class="col-md-10" style="height: 200px;">
+                        <div class="iframe-container" style="overflow: hidden; padding-top: 56.25%; position: relative;">
+                            <iframe allow="microphone; camera" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%;" src="https://success.zoom.us/wc/join/{meeting-id}" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                     </div>
+                </div>
+                <!-- Page-body end -->
+            </div>
+            <div id="styleSelector"> </div>
+        </div>
+    </div>
+{% endblock contents %}

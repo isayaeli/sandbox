@@ -1,0 +1,624 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Plumar | Opportunities</title>
+{% endblock title %}
+
+{% block header %}
+{% endblock header %}
+
+{% block contents %}
+{% include 'includes/nav.html' %}
+        <!-- Breadcrumb Section Start -->
+        <div class="breadcrumb-section section bg_color--5 pt-60 pt-sm-50 pt-xs-40 pb-60 pb-sm-50 pb-xs-40">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-breadcrumb-content">
+                            <ul class="page-breadcrumb">
+                                <li><a href="{% url 'home' %}">Home</a></li>
+                                <li>Opportunity Listing</li>
+                            </ul>
+                            <h1>Opportunity Listing</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Breadcrumb Section Start -->
+
+        <!-- Job Listing Section Start -->
+        <div class="job-listing-section section bg_color--5 pb-120 pb-lg-100 pb-md-80 pb-sm-60 pb-xs-50">
+            <div class="container">
+                <div class="row no-gutters">
+
+                    <div class="col-lg-4 order-lg-1 order-2 pr-55 pr-md-15 pr-sm-15 pr-xs-15">
+                        <div class="sidebar-wrapper-two mt-sm-40 mt-xs-40">
+                            <div class="common-sidebar-widget sidebar-two">
+                                <h2 class="sidebar-title">Find a job</h2>
+                                <div class="sidebar-search-form-two">
+                                    <form action="" method="get">
+                                        <div class="input-group">
+                                            <input type="text" name="q" placeholder="Search...">
+                                            <i class="lnr lnr-magnifier"></i>
+                                        </div>
+                                        <button type="submit" class="ht-btn theme-btn theme-btn-two w-100">Search</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="common-sidebar-widget sidebar-two">
+                                <h2 class="sidebar-title">Experience</h2>
+                                <form action="" method="get">
+                                    <ul class="sidebar-cbx-list">
+                                        <li>
+                                            <div class="filter-name-item">
+                                                <input onchange="this.form.submit()" value="0" type="checkbox" name="q" id="experience-cbx">
+                                                <label for="experience-cbx">Less than 1</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="filter-name-item">
+                                                <input onchange="this.form.submit()" value="1-5" type="checkbox" name="q" id="experience-cbx-two">
+                                                <label for="experience-cbx-two">1-5 year</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="filter-name-item">
+                                                <input onchange="this.form.submit()" value="5-8" type="checkbox" name="q" id="experience-cbx-three">
+                                                <label for="experience-cbx-three">5-8years</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="filter-name-item">
+                                                <input onchange="this.form.submit()" value="8" type="checkbox" name="q" id="experience-cbx-four">
+                                                <label for="experience-cbx-four">8 and More </label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
+                            <div class="common-sidebar-widget sidebar-two">
+                                <h2 class="sidebar-title">Location</h2>
+                                <div class="sidebar-category">
+                                    <form method="get" action="">
+                           
+                                            <select class="nice-select wide"  name="q" id="" onchange="this.form.submit()">
+                                                <option value="0">____Search By Locations___</option>
+                                                <option value="Dar es salaam">Dar es salaam</option>
+                                                <option value="Arusha">Arusha</option>
+                                                <option value="Tanga">Tanga</option>
+                                                <option value="Kilimanjaro">Kilimanjaro</option>
+                                                <option value="Pwani">Pwani</option>
+                                                <option value="Dodoma">Dodoma</option>
+                                                <option value="Singida">Singida</option>
+                                                <option value="Tabora">Tabora</option>
+                                                <option value="Mwanza">Mwanza</option>
+                                                <option value="Shinyanga">Shinyanga</option>
+                                                <option value="Mara">Mara</option>
+                                                <option value="Rukwa">Rukwa</option>
+                                                <option value="Kagera">Kagera</option>
+                                                <option value="Katavi">Katavi</option>
+                                                <option value="Njombe">Njombe</option>
+                                                <option value="Iringa">Iringa</option>
+                                                <option value="Mwanza">Mwanza</option>
+                                                <option value="Mbeya">Mbeya</option>
+                                                <option value="Morogoro">Morogoro</option>
+                                            </select>
+            
+                                    </form>
+                                </div>
+
+                                <!-- <div class="sidebar-location-range mt-10">
+                                    <div class="location-range">
+                                        <label for="amount">Radius:</label>
+                                        <input type="text" id="amount" readonly>
+                                    </div>
+                                    <div id="slider-range-min"></div>
+                                </div> -->
+                            </div>
+                            <div class="common-sidebar-widget sidebar-two">
+                                <h2 class="sidebar-title">salaries</h2>
+                              
+                                    <form method="get" action="">
+                                        <div class="input-group" style="width: 100%;">
+                                            <select class="form-control" style="width: 100%;" name="q" id="" onchange="this.form.submit()">
+                                                <option value="0">____Search By Salary Range</option>
+                                                <option value="0 - 500k">0 - 500k'</option>
+                                                <option value="00k - 1M">00k - 1M</option>
+                                                <option value="1M - 3M">1M - 3M</option>
+                                                <option value="3M - 5M">3M - 5M</option>
+                                                <option value="5M - 8M">5M - 8M</option>
+                                                <option value="8M and More">8M and More</option>
+                                            </select>
+                            
+                                        </div>
+                                    </form>
+                                
+                            </div>
+                            <div class="common-sidebar-widget sidebar-two">
+                                <h2 class="sidebar-title">Type</h2>
+                                <form action="" method="get">
+                                    <ul class="sidebar-cbx-list">
+                                        <li>
+                                            <div class="filter-name-item">
+                                                <input value="contractual" onchange="this.form.submit()" type="checkbox" name="q" id="type-cbx">
+                                                <label for="type-cbx">Contract (0)</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="filter-name-item">
+                                                <input value="freelance" onchange="this.form.submit()" type="checkbox" name="q" id="type-cbx">
+                                                <label for="type-cbx">Freelance (0)</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="filter-name-item">
+                                                <input value="voluntering" onchange="this.form.submit()" type="checkbox" name="q" id="type-cbx-two">
+                                                <label for="type-cbx-two"> Voluntering (3)</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="filter-name-item">
+                                                <input value="full time" onchange="this.form.submit()" type="checkbox" name="q" id="type-cbx-three">
+                                                <label for="type-cbx-three">Full Time (13)</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="filter-name-item">
+                                                <input value="internship" onchange="this.form.submit()" type="checkbox" name="q" id="type-cbx-four">
+                                                <label for="type-cbx-four">Internship (1)</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="filter-name-item">
+                                                <input value="part-time" onchange="this.form.submit()" type="checkbox" name="q" id="type-cbx-five">
+                                                <label for="type-cbx-five">Part Time (2)</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="filter-name-item">
+                                                <input value="remote" onchange="this.form.submit()" type="checkbox" name="q" id="type-cbx-six">
+                                                <label for="type-cbx-six">Remote (2)</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="filter-name-item">
+                                                <input value="temporary" onchange="this.form.submit()" type="checkbox" name="q" id="type-cbx-seven">
+                                                <label for="type-cbx-seven">Temporary (2)</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
+                            <!-- <div class="common-sidebar-widget sidebar-two">
+                                <h2 class="sidebar-title">Level</h2>
+                                <ul class="sidebar-cbx-list">
+                                    <li>
+                                        <div class="filter-name-item">
+                                            <input type="checkbox" name="expericence" id="level-cbx">
+                                            <label for="level-cbx">Junior (1)</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="filter-name-item">
+                                            <input type="checkbox" name="expericence" id="level-cbx-two">
+                                            <label for="level-cbx-two"> Manager (6)</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="filter-name-item">
+                                            <input type="checkbox" name="expericence" id="level-cbx-three">
+                                            <label for="level-cbx-three">Professional (3)</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="filter-name-item">
+                                            <input type="checkbox" name="expericence" id="level-cbx-four">
+                                            <label for="level-cbx-four">Senior (3)</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div> -->
+                            <div class="common-sidebar-widget sidebar-two">
+                                <h2 class="sidebar-title">Skills</h2>
+                                <ul class="sidebar-tag">
+                                    <li><a href="?q=software">software</a></li>
+                                    <li><a href="?q=manager">Manager</a></li>
+                                    <li><a href="?q=mobile">Mobile</a></li>
+                                    <li><a href="?q=web">Web dev</a></li>
+                                    <li><a href="?q=app">app</a></li>
+                                    <li><a href="?q=python">python</a></li>
+                                    <li><a href="?q=businesss">Business Developemnt</a></li>
+                                    <li><a href="?q=market">Market</a></li>
+                                </ul>
+                            </div>
+                            <div class="common-sidebar-widget sidebar-two">
+                                <h2 class="sidebar-title">Company Spotlight</h2>
+                                <div class="sidebar-emp-slider row">
+                                    {% for data in startup %}
+                                    <div class="col-lg-4 d-flex flex-column">
+                                        <!-- Single Employer Item Start -->
+                                        <div class="single-employer-item">
+                                            {% if data.image %}
+                                            <div class="image-featured">
+                                                <img style="width: 100%;" src="{{ data.image.url }}" alt="">
+                                            </div>
+                                            {% endif %}
+                                            <div class="item-content">
+                                                <!-- <div class="avatar">
+                                                    <img src="{{ data.image.url }}" alt="">
+                                                </div> -->
+                                                <h4 class="title"><a href="#">{{ data.user.username|capfirst }}</a></h4>
+                                                <div class="meta">
+                                                    <div class="star">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </div>
+                                                    <span class="location"><i class="lnr lnr-map-marker"></i>{{ data.location}} </span>
+                                                    <span class="count-job theme-color">
+                                                        {% if data.user.opportunity_set.count == 1 %}
+                                                            {{ data.user.opportunity_set.count }} Opportunity
+                                                        {% else %}
+                                                            {{ data.user.opportunity_set.count }} Opportunities
+                                                        {% endif %}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Single Employer Item End -->
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="common-sidebar-widget sidebar-two">
+                                <div class="sidbar-image">
+                                    <a href="#">
+                                        <img src="assets/images/banner/ads.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8 order-lg-2 order-1">
+                        <div class="filter-form">
+                            <div class="result-sorting">
+                                <div class="total-result">
+                                    <span class="total">{{ opportunities_count }}</span>
+                                    Opportunities
+                                </div>
+                                <div class="job-alert-form">
+                                    <span class="btn-open-form">
+                                    <i class="lnr lnr-envelope"></i>
+                                    Email me jobs like these 
+                                </span>
+                                    <div class="job-alert-form-box">
+                                        <h3 class="title"> Email me jobs like these</h3>
+                                        <div class="btn-close-form"><i class="lnr lnr-cross-circle"></i></div>
+                                        <form action="#">
+                                            <div class="newsletter">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <input type="text" name="alert-name" placeholder="Job alert name..." class="alert-name">
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <input type="email" class="alert-email" placeholder="example@email.com" name="alert-email">
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <button class="ht-btn">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="form-left">
+                                    <div class="sort-by">
+                                        <form action="#">
+                                            <label class="text-sortby">Sort by:</label>
+                                            <select class="nice-select">
+                                                <option value="1">Title</option>
+                                                <option value="2">Date</option>
+                                                <option value="3">Salary</option>
+                                            </select>
+                                        </form>
+                                    </div>
+                                    <div class="layout-switcher">
+                                        <ul class="nav">
+                                            <li><a class="active show" data-toggle="tab" href="#list"><i class="fa fa-list"></i></a></li>
+                                            <li><a data-toggle="tab" href="#grid"><i class="fa fa-th"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-content">
+                            <div id="list" class="tab-pane fade show active">
+                                <div class="row">
+                                    {% for data in opps %}
+                                    <div class="col-lg-12 mb-20">
+                                        <!-- Single Job Start  -->
+                                        <div class="single-job style-two">
+                                            <div class="info-top">
+                                                <div class="job-image">
+                                                    <a href="{% url 'opp_details' data.id %}">
+                                                        {% if data.logo %}
+                                                        <img src="{{ data.logo.url }}" alt="logo">
+                                                        {% endif %}
+                                                    </a>
+                                                </div>
+                                                <div class="job-info">
+                                                    <div class="job-info-inner">
+                                                        <div class="job-info-top">
+                                                            <div class="saveJob for-listing">
+                                                                <span class="featured-label">featured</span>
+                                                                <a class="job-type-label ml-20 mr-20">{{ data.category }}</a>
+                                                                {% if user.is_authenticated and user.profile.user_type == 'talent' %}
+                                                                <form   method="post" action="{% url 'mark' %}">
+                                                                    {% if request.user in data.marked.all %}
+                                                                    <buttom class="save-job" id="mark" value="{{data.id}}">
+                                                                        <i id="mark{{data.id}}" class="fas fa-bookmark" style="color: red;"></i>
+                                                                    </button>
+                                                                    {% else %}
+                                                                    <buttom class="save-job" id="mark" value="{{data.id}}">
+                                                                        <i id="mark{{data.id}}" class="far fa-bookmark" style="color:red;"></i>
+                                                                    </button>
+                                                                    {% endif %}
+                                                                </form>
+                                                                {% endif %}
+                                                            </div>
+                                                            <div class="title-name">
+                                                                <h3 class="job-title">
+                                                                    <a href="{% url 'opp_details' data.id %}">{{ data.title }}</a>
+                                                                </h3>
+                                                                <div class="employer-name">
+                                                                    <a href="{% url 'opp_details' data.id %}">{{ data.startup_name }}</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="job-meta-two">
+                                                            <div class="field-salary_from">
+                                                                {% if data.salary_range == '0' %}
+                                                                 Confidential
+                                                                {% else %}
+                                                                Tsh{{data.salary_range}} / month
+                                                                {% endif %}
+                                                            </div>
+                                                            <div class="field-datetime"><i class="lnr lnr-clock"></i>{{ data.published }}</div>
+                                                            <div class="field-map"><i class="lnr lnr-map-marker"></i>{{ data.location }}</div>
+                                                        </div>
+                                                        <div class="job-skill-tag">
+                                                            <a href="#">Android</a>
+                                                            <a href="#">app</a>
+                                                            <a href="#">ReactJs</a>
+                                                            <a href="#">Ruby</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Single Job End -->
+                                    </div>
+                                    {% empty %}
+                                     <span style="font-size: 25px; margin-left: 40px;" class="text-danger font-weight-bolder ml-5" >No result for found</span>
+                                    {% endfor %}
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <nav aria-label="Page navigation example">
+                                            {% if opps.has_other_pages %}
+                                                <ul class="pagination">
+                                                    {% if opps.has_previous %}
+                                                        <li class="page-item">
+                                                            <a class="page-link text-dark" href="?page={{ opps.previous_page_number }}" aria-label="Previous">
+                                                            <span aria-hidden="true">&laquo;</span>
+                                                            </a>
+                                                        </li>
+                                                    {% else %}
+                                                    <li class="page-item disabled text-center"></li>
+                                                    {% endif %}
+    
+                                                    {% for i in opps.paginator.page_range %}
+                                                        {% if opps.number == i %}
+                                                            <li class="active "><a class="page-link bg-warning text-dark" href="?page={{i}}">{{ i }}</a></li>
+                                                        {% else %}
+                                                            <li class="page-item"><a class="page-link text-dark" href="?page={{i}}">{{ i }}</a></li>
+                                                        {% endif %}
+                                                    {% endfor %}
+    
+                                                    {% if opps.has_next %}
+                                                        <li class="page-item">
+                                                            <a class="page-link text-dark" href="?page={{ opps.next_page_number }}" aria-label="Next">
+                                                            <span aria-hidden="true">&raquo;</span>
+                                                            </a>
+                                                        </li>
+                                                    {% else %}
+                                                    <li class="page-item disabled text-center"></li>
+                                                    {% endif %}
+                                                </ul>
+                                            {% endif %}
+                                          </nav>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="grid" class="tab-pane fade">
+                                <div class="row">
+                                    {% for data in opps %}
+                                    <div class="col-md-6 mb-20">
+                                        <!-- Single Job Start  -->
+                                        <div class="single-job-grid-two">
+                                            <div class="saveJob-grid">
+                                                <a class="job-type-label remote" href="#">{{data.category}}</a>
+                                                {% if user.is_authenticated and user.profile.user_type == 'talent' %}
+                                                <form action="{% url 'mark' %}" method="post">
+                                                    {% csrf_token %}
+                                                    {% if request.user in data.marked.all %}
+                                                    <buttom type=submit id="mark" class="save-job save{{data.id}} bg-white" value="{{data.id}}">
+                                                        <i id="mark2{{ data.id }}" class="fas fa-bookmark" style="color:red;" ></i>
+                                                        <span class="save2{{data.id}}" style="color:red;" >Saved</span>
+                                                    </button>
+                                                    {% else %}
+                                                    <buttom type=submit id="mark" class="save-job save{{data.id}} bg-white " value="{{data.id}}">
+                                                        <i id="mark2{{ data.id }}" class="far fa-bookmark"style="color:red;"></i>
+                                                        <span class="save2{{data.id}}" style="color:red;" >Save</span>
+                                                    </button>
+                                                    {% endif %}
+                                                </form>
+                                                {% endif %}
+                                               
+                                            </div>
+                                            <div class="job-image">
+                                                <a href="{% url 'opp_details' data.id %}">
+                                                    {% if data.logo %}
+                                                    <img style="width: auto; height: 60px;" src="{{ data.logo.url }}" alt="">
+                                                    {% endif %}
+                                                </a>
+                                                <span class="featured-label for-grid">featured</span>
+                                            </div>
+                                            <div class="job-info">
+                                                <div class="job-info-top">
+                                                    <div class="title-name">
+                                                        <h3 class="job-title">
+                                                            <a href="{% url 'opp_details' data.id %}">{{ data.title }}</a>
+                                                        </h3>
+                                                        <div class="employer-name">
+                                                            <a href="employer-details.html">{{ data.startup_name }}</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="job-meta-two">
+                                                    <div class="field-salary_from">
+                                                        <i class="gj-icon gj-icon-money"></i>
+                                                        {% if data.salary_range == '0' %}
+                                                                 Confidential
+                                                        {% else %}
+                                                                Tsh{{data.salary_range}} / month
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="field-datetime"><i class="lnr lnr-clock"></i>{{ data.published }}</div>
+                                                    <div class="field-map"><i class="lnr lnr-map-marker"></i>{{ data.location }}</div>
+                                                </div>
+                                                <div class="field-descriptions">
+                                                    <p>{{ data.description|truncatechars:65 }} <a href="#">More</a></p>
+                                                </div>
+                                                <div class="job-skill-tag">
+                                                    <a href="#">Android</a>
+                                                    <a href="#">app</a>
+                                                    <a href="#">ReactJs</a>
+                                                    <a href="#">Ruby</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Single Job End -->
+                                    </div>
+                                    {% empty %}
+                                    <span class="text-danger font-weight-bolder ml-5" >No result for found</span>
+                                    {% endfor %}
+                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <nav aria-label="Page navigation example">
+                                            {% if opps.has_other_pages %}
+                                                <ul class="pagination">
+                                                    {% if opps.has_previous %}
+                                                        <li class="page-item">
+                                                            <a class="page-link text-dark" href="?page={{ opps.previous_page_number }}" aria-label="Previous">
+                                                            <span aria-hidden="true">&laquo;</span>
+                                                            </a>
+                                                        </li>
+                                                    {% else %}
+                                                    <li class="page-item disabled text-center"></li>
+                                                    {% endif %}
+    
+                                                    {% for i in opps.paginator.page_range %}
+                                                        {% if opps.number == i %}
+                                                            <li class="page-item "><a class="page-link  bg-warning text-dark" href="?page={{i}}">{{ i }}</a></li>
+                                                        {% else %}
+                                                            <li class="page-item"><a class="page-link text-dark" href="?page={{i}}">{{ i }}</a></li>
+                                                        {% endif %}
+                                                    {% endfor %}
+    
+                                                    {% if opps.has_next %}
+                                                        <li class="page-item">
+                                                            <a class="page-link text-dark" href="?page={{ opps.next_page_number }}" aria-label="Next">
+                                                            <span aria-hidden="true">&raquo;</span>
+                                                            </a>
+                                                        </li>
+                                                    {% else %}
+                                                    <li class="page-item disabled text-center"></li>
+                                                    {% endif %}
+                                                </ul>
+                                            {% endif %}
+                                          </nav>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Job Listing Section End -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        
+        <script>
+            function updateRangeInput(elem) {
+                $(elem).next().val($(elem).val());
+            }
+            
+            $(document).on('click', '#mark', function(e){
+                e.preventDefault();
+
+                
+
+                var pk = $(this).attr('value');
+                
+                $.ajax({
+                    type:'POST',
+                    url:'{% url "mark" %}',
+                    data:{
+                        'id':pk,
+                        'csrfmiddlewaretoken':'{{csrf_token}}'
+                    },
+                    success:function(response){
+                        console.log(response)
+                       
+                       // for toggling icon on list view
+                        $("#mark"+pk).toggleClass('far fa-bookmark fas fa-bookmark')
+                        //for toggling icon on grid view
+                        $("#mark2"+pk).toggleClass('far fa-bookmark fas fa-bookmark')
+                       
+                        // for grid  view on to change text on successfull post
+                        if($('.save2'+pk).text() == 'Save'){
+                            $('.save2'+pk).text('Saved')  
+                        }
+                        else {
+                            $('.save2'+pk).text('Save')
+                        }
+                
+                    },
+                    errror: function(rs,e){
+                        console.log(rs.responseText);
+                    }
+                })
+
+     
+            })
+
+
+            
+
+         
+        </script>
+{% endblock contents %}
+

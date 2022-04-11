@@ -1,0 +1,361 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    <title>Plumar | Auth</title>
+{% endblock title %}
+
+{% block header %}
+{% endblock header %}
+
+{% block contents %}
+{% include 'includes/nav.html' %}
+    <!-- Breadcrumb Section Start -->
+        <div class="breadcrumb-section section bg_color--5 pt-60 pt-sm-50 pt-xs-40 pb-30 pb-sm-50 pb-xs-40">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12" id="top">
+                        <div class="page-breadcrumb-content">
+                            <ul  class="page-breadcrumb">
+                                <li><a href="{% url 'home' %}">Home</a></li>
+                                <li>Login & Register</li>
+                            </ul>
+                            {% if messages %}
+                            {% for message in messages %}
+                                {% if message.tags == 'success' %}
+                                    <div class="alert alert-success"><i class="bi bi-check-circle"></i> 
+                                        {{ message }}
+                                    </div>
+                                {% endif %}
+                                {% if message.tags == 'error' %}
+                                    <div id="noto" class="alert alert-danger bg-danger text-center alert-dismissible fade show ">
+                                        <span class="text-white" >{{ message }}</span>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+
+
+                        {% for field in form %}
+                            {% if field.errors %}
+                            <div id="noto" class=" text-white text-center alert alert-danger bg-danger alert-dismissible fade show" role="alert">
+                                {{ field.errors|striptags }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Breadcrumb Section Start -->
+
+       
+       
+
+        <!-- Login Register Section Start -->
+        <div class="login-register-section section bg_color--5 pb-120 pb-lg-100 pb-md-80 pb-sm-60 pb-xs-50">
+            <div class="container">
+                <div class="row no-gutters">
+                    
+                    <div class="col-lg-4">
+                        <div class="login-register-form-area">
+                            <div class="login-tab-menu">
+                                <ul class="nav">
+                                    {% if request.path == '/login' %}
+                                    <li><a class="active show" data-toggle="tab" href="#login">Login</a></li>
+                                    <li><a data-toggle="tab" href="#register">Register</a></li>
+                                    {% elif request.path == '/register' %}
+                                    <li><a data-toggle="tab" href="#login">Login</a></li>
+                                    <li><a  class="active show" data-toggle="tab" href="#register">Register</a></li>
+                                    {% endif %}
+                                   
+                                </ul>
+                            </div>
+                            <div class="tab-content">
+                                <div id="login" class="tab-pane fade show {% if request.path == '/login' %} active{% endif %}">
+                                    <div class="login-register-form">
+                                        <form action="{% url 'login' %}" method="post">
+                                            {% csrf_token %}
+                                            <p>Login to Plumar with your registered account</p>
+                                            <div class="row">
+                                                {% if request.GET.next %}
+                                                <input type="hidden" class="form-control" name="next" value="{{request.GET.next}}">
+                                                {% endif %}
+                                                <div class="col-12">
+                                                    <div class="single-input">
+                                                        <input type="text" placeholder="Username or Email" name="username">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="single-input">
+                                                        <input type="password" placeholder="Password" name="password">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 mb-25"><button type="submit" class="ht-btn">Login</button></div>
+                                                <div class="ml-4" >Forgot Password? <a href="{% url 'password_reset' %}">click here</a></div>
+                                            </div>
+                                        </form>
+                                        <div class="divider">
+                                            <span class="line"></span>
+                                            <span class="circle">or login with</span>
+                                        </div>
+                                        <div class="social-login">
+                                            <ul class="social-icon">
+                                                <li><a class="facebook" href="{% url 'social:begin' 'facebook' %}"><i class="fab fa-facebook"></i></a></li>
+                                                <li><a class="twitter" href="{% url 'social:begin' 'twitter' %}"><i class="fab fa-twitter"></i></a></li>
+                                                <li><a class="linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>
+                                                <li><a class="google" href="#"><i class="fab fa-google-plus"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="register" class="tab-pane fade {% if request.path == '/register' %} active{% endif %}">
+                                    <div class="login-register-form">
+                                        <form action="{% url 'register' %}" method="post">
+                                            {% csrf_token %}
+                                            <p>Account</p>
+                                            <div class="row row-5">
+                                                <div class="col-12">
+                                                    <div class="single-input">
+                                                        <input type="text" placeholder="Your Username" name="username">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="single-input">
+                                                        <input type="email" placeholder="Your Email Address" name="email">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="single-input">
+                                                        <input type="password" placeholder="Password" name="password1">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="single-input">
+                                                        <input type="password" placeholder="Confirm Password" name="password2">
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="col-6">
+                                                    <div class="checkbox-input">
+                                                        <input type="checkbox" name="login-form-candidate" id="login-form-candidate-one">
+                                                        <label for="login-form-candidate-one">I am a candidate</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="checkbox-input">
+                                                        <input type="checkbox" name="login-form-employer" id="login-form-employer-one">
+                                                        <label for="login-form-employer-one">I am a employer</label>
+                                                    </div>
+                                                </div> -->
+                                                <div class="col-12">
+                                                    <div class="register-account">
+                                                        <input id="register-terms-conditions-one" type="checkbox" class="checkbox" checked="" required="">
+                                                        <label for="register-terms-conditions-one">I read and agree to the <a href="#">Terms &amp; Conditions</a> and <a href="#">Privacy Policy</a></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 mb-25"><button type="submit" class="ht-btn">Register</button></div>
+                                            </div>
+                                        </form>
+                                        <div class="divider">
+                                            <span class="line"></span>
+                                            <span class="circle">or login with</span>
+                                        </div>
+                                        <div class="social-login">
+                                            <ul class="social-icon">
+                                                <li><a class="facebook" href="{% url 'social:begin' 'facebook' %}"><i class="fab fa-facebook"></i></a></li>
+                                                <li><a class="twitter" href="{% url 'social:begin' 'twitter' %}"><i class="fab fa-twitter"></i></a></li>
+                                                <li><a class="linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>
+                                                <li><a class="google" href="#"><i class="fab fa-google-plus"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="login-instruction">
+                            <div class="login-instruction-content"
+                                <h3 class="title">Why Login To Us</h3>
+                                <p>It’s important for you to have an account and login in order to have full access at Plumar. We need to know your account details in order to allow work together</p>
+                                <ul class="list-reasons">
+                                    <li class="reason">Be alerted to the latest opportunities</li>
+                                    <li class="reason">Apply for jobs with a single click</li>
+                                    <li class="reason">Showcase your CV to thousands of startups</li>
+                                    <li class="reason">Keep a record of all your matches</li>
+                                </ul>
+                                <span class="sale-text theme-color border-color">Login today &amp; Get access to tons of opportunities </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Login Register Section End -->
+
+      
+
+        <!-- Modal Area Strat -->
+        <div class="modal fade quick-view-modal-container" id="quick-view-modal-container" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="row no-gutters">
+
+                                <div class="col-lg-4">
+                                    <div class="login-register-form-area">
+                                        <div class="login-tab-menu">
+                                            <ul class="nav">
+                                                <li><a class="active show" data-toggle="tab" href="#loginOne">Login</a></li>
+                                                <li><a data-toggle="tab" href="#registerOne">Register</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="tab-content">
+                                            <div id="loginOne" class="tab-pane fade show active">
+                                                <div class="login-register-form">
+                                                    <form action="#" method="post">
+                                                        <p>Login to Jotopa with your registered account</p>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="single-input">
+                                                                    <input type="text" placeholder="Username or Email" name="name">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <div class="single-input">
+                                                                    <input type="password" placeholder="Password" name="password">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <div class="checkbox-input">
+                                                                    <input type="checkbox" name="login-form-remember" id="login-form-remember-one">
+                                                                    <label for="login-form-remember-one">Remember me</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 mb-25"><button class="ht-btn">Login</button></div>
+                                                        </div>
+                                                    </form>
+                                                    <div class="divider">
+                                                        <span class="line"></span>
+                                                        <span class="circle">or login with</span>
+                                                    </div>
+                                                    <div class="social-login">
+                                                        <ul class="social-icon">
+                                                            <li><a class="facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+                                                            <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                                                            <li><a class="linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>
+                                                            <li><a class="google" href="#"><i class="fab fa-google-plus"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="registerOne" class="tab-pane fade">
+                                                <div class="login-register-form">
+                                                    <form action="{% url 'register' %}" method="post">
+                                                        {% csrf_token %}
+                                                        <p>Create Your account</p>
+                                                        <div class="row row-5">
+                                                            <div class="col-12">
+                                                                <div class="single-input">
+                                                                    <input type="text" placeholder="Your Username" name="username">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <div class="single-input">
+                                                                    <input type="email" placeholder="Your Email Address" name="email">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="single-input">
+                                                                    <input type="password" placeholder="Password" name="password1">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="single-input">
+                                                                    <input type="password" placeholder="ConPassword" name="password2">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="checkbox-input">
+                                                                    <input type="checkbox" name="login-form-candidate" id="login-form-candidate-one">
+                                                                    <label for="login-form-candidate-one">I am a candidate</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="checkbox-input">
+                                                                    <input type="checkbox" name="login-form-employer" id="login-form-employer-one">
+                                                                    <label for="login-form-employer-one">I am a employer</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <div class="register-account">
+                                                                    <input id="register-terms-conditions-one" type="checkbox" class="checkbox" checked="" required="">
+                                                                    <label for="register-terms-conditions-one">I read and agree to the <a href="{% url 'terms' %}">Terms &amp; Conditions</a> and 
+                                                                        <a href="{% url 'terms' %}">Privacy Policy</a></label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 mb-25"><button type="submit" class="ht-btn">Register</button></div>
+                                                        </div>
+                                                    </form>
+                                                    <div class="divider">
+                                                        <span class="line"></span>
+                                                        <span class="circle">or login with</span>
+                                                    </div>
+                                                    <div class="social-login">
+                                                        <ul class="social-icon">
+                                                            <li><a class="facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+                                                            <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                                                            <li><a class="linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>
+                                                            <li><a class="google" href="#"><i class="fab fa-google-plus"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="login-instruction">
+                                        <div class="login-instruction-content">
+                                            <h3 class="title">Why Login To Us</h3>
+                                            <p>It’s important for you to have an account and login in order to have full access at Jotopa. We need to know your account details in order to allow work together</p>
+                                            <ul class="list-reasons">
+                                                <li class="reason">Be alerted to the latest jobs</li>
+                                                <li class="reason">Apply for jobs with a single click</li>
+                                                <li class="reason">Showcase your CV to thousands of employers</li>
+                                                <li class="reason">Keep a record of all your applications</li>
+                                            </ul>
+                                            <span class="sale-text theme-color border-color">Login today &amp; Get 15% Off Coupon for the first planning purchase</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Modal Area End -->
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>
+          $('#noto').delay(5000).fadeOut('slow');
+        </script>
+{% endblock contents %}
+     

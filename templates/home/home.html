@@ -1,0 +1,1018 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>Plumar | Home</title>
+{% endblock title %}
+
+{% block contents %}
+        <style>
+            .rating span{
+                display: none;
+            }
+        </style>
+        <!--slider section start-->
+        <div class="hero-section section position-relative">
+            <!--Hero Item start-->
+            <div class="hero-item hero-item-two bg_image-v2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            {% if messages %}
+                            {% for message in messages %}
+                                {% if message.tags == 'success' %}
+                                    <div id="noto" class="alert alert-success"><i class="bi bi-check-circle"></i> 
+                                        {{ message }}
+                                    </div>
+                                {% endif %}
+                                {% if message.tags == 'error' %}
+                                    <div id="noto" class="alert alert-danger bg-danger alert-dismissible fade show ">
+                                        <span class="text-white" >{{ message }}</span>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                            <!--Hero Content start-->
+                            <div class="hero-content-3 left">
+                                <h2 class="title">next stop...</h2>
+                                <h3 class="sub-title">to secure your opportunity!</h3>
+                                <p>We have <span class="theme-color">280,000+</span> live Opportunities adverts on our site, helping you to <br> find any type of opportunity, in any industry, wherever you are based.</p>
+
+                                    <div class="job-search-wrap-two mt-50">
+                                        <div class="job-search-form">
+                                            <form action="{% url 'opportunity' %}" method="get">
+                                                <!-- Single Field Item Start  -->
+                                                <div class="single-field-item keyword">
+                                                    <label for="keyword">What</label>
+                                                    <input id="keyword" placeholder="What are you looking for?" name="search" type="text">
+                                                </div>
+                                                <!-- Single Field Item End  -->
+                                                <!-- Single Field Item Start  -->
+                                                <div class="single-field-item location">
+                                                    <label for="location">Where</label>
+                                                    <input id="location" class="input-field input-field-location" placeholder="Location" name="search" type="text">
+                                                    <span class="btn-action-location">
+                                                <i class="far fa-dot-circle"></i>
+                                            </span>
+                                                </div>
+                                                <!-- Single Field Item End  -->
+                                                <div class="submit-btn">
+                                                    <button class="ht-btn" type="submit">Search</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="trending-keywords mt-30">
+                                            <div class="keywords style-two">
+                                                <span class="title">Popular </span>
+                                                <ul>
+                                                    <li><a href="#">Account Manager</a></li>
+                                                    <li><a href="#">Administrative</a></li>
+                                                    <li><a href="#">Android</a></li>
+                                                    <li><a href="#">Angular</a></li>
+                                                    <li><a href="#">app</a></li>
+                                                    <li><a href="#">ASP.NET</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+
+                            </div>
+                            <!--Hero Content end-->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Hero Item end-->
+        </div>
+        <!--slider section end-->
+
+        <!-- Funfact Section Start  -->
+        <div class="funfact-section section mt--270  mb-0">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-12">
+                        <div class="funfact-wrap  d-flex align-items-center">
+
+                            <!-- Single Funfact Start -->
+                            <div class="single-funfact funfact-style-two">
+                                <div class="funfact-content">
+                                    <span class="counter">{{talents.count}}</span>
+                                    <span class="text">Talents</span>
+                                </div>
+                            </div>
+                            <!-- Single Funfact End -->
+
+                            <!-- Single Funfact Start -->
+                            <div class="single-funfact funfact-style-two">
+                                <div class="funfact-content">
+                                    <span class="counter">{{startup.count}}</span>
+                                    <span class="text">Start-ups</span>
+                                </div>
+                            </div>
+                            <!-- Single Funfact End -->
+
+                            <!-- Single Funfact Start -->
+                            <div class="single-funfact funfact-style-two width-30">
+                                <div class="funfact-content">
+                                    <span class="counter">{{matches.count}}</span>
+                                    <span class="text">Matches</span>
+                                </div>
+                            </div>
+                            <!-- Single Funfact End -->
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+     
+        </div>
+
+        <!-- Job Section Start -->
+        <div class="job-section section pb-30 pb-lg-20 pb-md-20 pb-sm-10 pb-xs-30"style="margin-top:-100px">
+            <div class="container st-border pt-30 pt-lg-10 pt-md-20 pt-sm-20 pt-xs-10">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title-wrap mb-45 mb-xs-30">
+                            <div class="section-title">
+                                <h2 class="title text-uppercase">Top Featured Jobs</h2>
+                            </div>
+                            <div class="jetapo-link">
+                                <a href="{% url 'opportunity' %}"> Browse All Opportunities <i class="lnr lnr-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for data in opportunities %}
+                    <div class="col-xl-4 col-lg-6 col-md-6 mb-30">
+                        <!-- Single Job Start  -->
+                        <div class="single-job-grid d-flex flex-column">
+                            <div class="job-image">
+                                {% if data.logo %}
+                                <a href="{% url 'opp_details' data.id %}">
+                                    <img style="width:auto; height: 40px;" src="{{ data.logo.url }}" alt="logo">
+                                </a>
+                                {% endif %}
+                            </div>
+                            <a class="employer-name" href="#">{{ data.startup_name }}</a>
+                            <a class="job-type">{{ data.category }}</a>
+                            <div class="content-top">
+                                <h3 class="job-title"><a href="{% url 'opp_details' data.id %}">{{data.title}} </a></h3>
+                                <div class="job-info">
+                                    <p style="font-size: 12px;" class="address job-meta">{{ data.location }}</p>
+                                    <p class="time-ago job-meta">{{ data.published }}</p>
+                                </div>
+                            </div>
+                            <div class="content-bottom">
+                                <li style="list-style:none;" >{{ data.description|truncatechars:"70"|safe}} <a href="{% url 'opp_details' data.id %}">More</a></li>
+                                <div class="job-categories">
+                                    <a href="{% url 'opp_details' data.id %}" class="cat-item blue-color">{{ data.sector}}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Job End -->
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- Job Section End -->
+
+        <!-- Job Categories Section Start -->
+        <div class="job-categories-section section pb-90 pb-lg-70 pb-md-50 pb-sm-30 pb-xs-20">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title-wrap mb-45 mb-xs-30">
+                            <div class="section-title">
+                                <h2 class="title text-uppercase">Top Featured Categories</h2>
+                            </div>
+                            <div class="jetapo-link">
+                                <a href="{% url 'opportunity' %}"> Browse All Opportunities <i class="lnr lnr-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                        <!-- Single Job Categories Start -->
+                        <div class="single-job-categories mb-30">
+                            <div class="categories-image">
+                                <img src="{% static 'assets/img/cate1.png' %}" alt="">
+                                <i class="lnr lnr-briefcase text-warning"></i>
+                            </div>
+                            <div class="categories-content">
+                                <h3>
+                                    <a href="{% url 'opportunity' %}?q=software">
+                                        <small class="font-weight-bold" >Softeware Engineering</small>
+                                    </a>
+                                </h3>
+                                <span class="count-job">2 opportunities</span>
+                            </div>
+                        </div>
+                        <!-- Single Job Categories End -->
+                    </div>
+
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                        <!-- Single Job Categories Start -->
+                        <div class="single-job-categories mb-30">
+                            <div class="categories-image">
+                                <img src="{% static 'assets/img/cate2.png' %}" alt="">
+                                <i class="lnr lnr-printer text-warning"></i>
+                            </div>
+                            <div class="categories-content">
+                                <h3>
+                                    <a href="{% url 'opportunity' %}?q=accounting">
+                                        <small class="font-weight-bold" >Accounting</small>
+                                    </a>
+                                </h3>
+                                <span class="count-job">5 opportunities</span>
+                            </div>
+                        </div>
+                        <!-- Single Job Categories End -->
+                    </div>
+
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                        <!-- Single Job Categories Start -->
+                        <div class="single-job-categories mb-30">
+                            <div class="categories-image">
+                                <img src="{% static 'assets/img/cate3.png' %}" alt="">
+                                <i class="lnr lnr-bullhorn text-warning"></i>
+                            </div>
+                            <div class="categories-content">
+                                <h3>
+                                    <a href="{% url 'opportunity' %}?q=marketing">
+                                        <small class="font-weight-bold" >Marketing</small>
+                                    </a>
+                                </h3>
+                                <span class="count-job">2 opportunities</span>
+                            </div>
+                        </div>
+                        <!-- Single Job Categories End -->
+                    </div>
+
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                        <!-- Single Job Categories Start -->
+                        <div class="single-job-categories mb-30">
+                            <div class="categories-image">
+                                <img src="{% static 'assets/img/cate3.png' %}" alt="">
+                                <i class="lnr lnr-dinner text-warning"></i>
+                            </div>
+                            <div class="categories-content">
+                                <h3>
+                                    <a href="{% url 'opportunity' %}?q=hospitality">
+                                        <small class="font-weight-bold" >Hospitality</small>
+                                    </a>
+                                </h3>
+                                <span class="count-job">4 opportunities</span>
+                            </div>
+                        </div>
+                        <!-- Single Job Categories End -->
+                    </div>
+
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                        <!-- Single Job Categories Start -->
+                        <div class="single-job-categories mb-30">
+                            <div class="categories-image">
+                                <img src="{% static 'assets/img/cate4.png' %}" alt="">
+                                <i class="lnr lnr-store text-warning"></i>
+                            </div>
+                            <div class="categories-content">
+                                <h3>
+                                    <a href="{% url 'opportunity' %}?q=sales">
+                                        <small class="font-weight-bold" >Sales</small>
+                                    </a>
+                                </h3>
+                                <span class="count-job">1 opportunities</span>
+                            </div>
+                        </div>
+                        <!-- Single Job Categories End -->
+                    </div>
+
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                        <!-- Single Job Categories Start -->
+                        <div class="single-job-categories mb-30">
+                            <div class="categories-image">
+                                <img src="{% static 'assets/img/cate5.png' %}" alt="">
+                                <i class="lnr lnr-film-play text-warning"></i>
+                            </div>
+                            <div class="categories-content">
+                                <h3>
+                                    <a href="{% url 'opportunity' %}?q=graphics">
+                                        <small class="font-weight-bold" >Graphics Design</small>
+                                    </a>
+                                </h3>
+                                <span class="count-job">1 opportunities</span>
+                            </div>
+                        </div>
+                        <!-- Single Job Categories End -->
+                    </div>
+
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                        <!-- Single Job Categories Start -->
+                        <div class="single-job-categories mb-30">
+                            <div class="categories-image">
+                                <img src="{% static 'assets/img/cate7.png' %}" alt="">
+                                <i class="lnr lnr-pencil text-warning"></i>
+                            </div>
+                            <div class="categories-content">
+                                <h3>
+                                    <a href="{% url 'opportunity' %}?q=writing">
+                                    <small class="font-weight-bold" >Writing & Translations</small>
+                                    </a>
+                                </h3>
+                                <span class="count-job">1 opportunities</span>
+                            </div>
+                        </div>
+                        <!-- Single Job Categories End -->
+                    </div>
+
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                        <!-- Single Job Categories Start -->
+                        <div class="single-job-categories mb-30">
+                            <div class="categories-image">
+                                <img src="{% static 'assets/img/cate8.png' %}" alt="">
+                                <i class="lnr lnr-phone text-warning"></i>
+                            </div>
+                            <div class="categories-content">
+                                <h3>
+                                    <a href="{% url 'opportunity' %}?q=customer">
+                                        <small class="font-weight-bold" >Customer Service</small>
+                                    </a>
+                                </h3>
+                                <span class="count-job">1 opportunities</span>
+                               
+                            </div>
+                        </div>
+                        <!-- Single Job Categories End -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Job Categories Section End -->
+
+
+        {% if startups.count >= 4 %}
+        <!-- Featured Employer Start -->
+        <div class="featured-employer section pb-90 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title-wrap mb-45 mb-xs-30">
+                            <div class="section-title">
+                                <h3 class="title text-uppercase">start-ups Spotlight</h3>
+                            </div>
+                            <div class="jetapo-tab-menu">
+                                <ul class="nav df-font-style">
+                                    <li><a class="active show" data-toggle="tab" href="#all"> All </a></li>
+                                    <li><a data-toggle="tab" href="#all"> Most Viewed </a></li>
+                                    <li><a data-toggle="tab" href="#all"> Featured </a></li>
+                                    <li><a data-toggle="tab" href="#all"> Newest </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="tab-content">
+                            <div id="all" class="tab-pane fade show active">
+                                <div class="employer-slider">
+                                    {% for data in startups %}
+                                    <!-- Single Employer Item Start -->
+                                    <div class="employer-item">
+                                        <span class="featured-employer-label color-green">Featured</span>
+                                        <div class="rating">
+                                            {% include 'includes/rating_for_list_view.html' %}
+                                        </div>
+                                        <div class="employer-image">
+                                            {% if data.logo %}
+                                            <img src="{{ data.logo.url }}" alt="">
+                                            {% endif %}
+                                        </div>
+                                        <div class="employer-info-top text-center">
+                                            <span class="employer-location"><i class="lnr lnr-map-marker"></i> {{ data.location }}</span>
+                                            <h3 class="employer-name"><a href="{% url 'startup_details' data.id %}">{{ data.name }}</a></h3>
+                                            <div class="employer-info-rate d-flex align-items-center text-center">
+                                            </div>
+                                            <a href="{% url 'startup_details' data.id %}" class="link-openjobs">
+                                                {% if data.get_opportunities.count == 1  %}
+                                                {{ data.opportunity_set.all.count }} Opportunity
+                                                {% else %}
+                                                {{ data.opportunity_set.all.count }} Opportunities
+                                                {% endif %}
+                                                
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- Single Employer Item End -->
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div id="mostViewed" class="tab-pane fade">
+                                <div class="border-top-left employer-slider">
+
+                                    <!-- Single Employer Item Start -->
+                                    <div class="employer-item">
+                                        <div class="employer-image">
+                                            <img src="assets/images/companies_logo/logo-2.jpg" alt="">
+                                        </div>
+                                        <div class="employer-info-top">
+                                            <span class="employer-location"><i class="lnr lnr-map-marker"></i>  Victoria</span>
+                                            <h3 class="employer-name"><a href="employer-details.html">Liquididea Design</a></h3>
+                                            <div class="employer-info-rate d-flex align-items-center">
+                                                <div class="star">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span class="total">2 Ratings </span>
+                                            </div>
+                                            <a href="#" class="link-openjobs">3 opportunities</a>
+                                        </div>
+                                    </div>
+                                    <!-- Single Employer Item End -->
+
+                                    <!-- Single Employer Item Start -->
+                                    <div class="employer-item">
+                                        <span class="featured-employer-label color-green">Featured</span>
+                                        <div class="employer-image">
+                                            <img src="assets/images/companies_logo/logo-3.jpg" alt="">
+                                        </div>
+                                        <div class="employer-info-top">
+                                            <span class="employer-location"><i class="lnr lnr-map-marker"></i> Osaka, Osaka</span>
+                                            <h3 class="employer-name"><a href="employer-details.html">Shippo Company</a></h3>
+                                            <div class="employer-info-rate d-flex align-items-center">
+                                                <div class="star">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span class="total">1 Ratings </span>
+                                            </div>
+                                            <a href="#" class="link-openjobs">1 opportunities</a>
+                                        </div>
+                                    </div>
+                                    <!-- Single Employer Item End -->
+
+                                    <!-- Single Employer Item Start -->
+                                    <div class="employer-item">
+                                        <span class="featured-employer-label color-green">Featured</span>
+                                        <div class="employer-image">
+                                            <img src="assets/images/companies_logo/logo-4.jpg" alt="">
+                                        </div>
+                                        <div class="employer-info-top">
+                                            <span class="employer-location"><i class="lnr lnr-map-marker"></i>  Chicago, California</span>
+                                            <h3 class="employer-name"><a href="employer-details.html">Alpha Investing <i class="fas fa-check-circle"></i></a></h3>
+                                            <div class="employer-info-rate d-flex align-items-center">
+                                                <div class="star">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span class="total">1 Ratings </span>
+                                            </div>
+                                            <a href="#" class="link-openjobs">2 opportunities</a>
+                                        </div>
+                                    </div>
+                                    <!-- Single Employer Item End -->
+
+                                    <!-- Single Employer Item Start -->
+                                    <div class="employer-item">
+                                        <span class="featured-employer-label color-green">Featured</span>
+                                        <div class="employer-image">
+                                            <img src="assets/images/companies_logo/logo-5.jpg" alt="">
+                                        </div>
+                                        <div class="employer-info-top">
+                                            <span class="employer-location"><i class="lnr lnr-map-marker"></i>  New York, New York</span>
+                                            <h3 class="employer-name"><a href="employer-details.html">Radio Game</a></h3>
+                                            <div class="employer-info-rate d-flex align-items-center">
+                                                <div class="star">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span class="total">3 Ratings </span>
+                                            </div>
+                                            <a href="#" class="link-openjobs">4 opportunities</a>
+                                        </div>
+                                    </div>
+                                    <!-- Single Employer Item End -->
+
+                                    <!-- Single Employer Item Start -->
+                                    <div class="employer-item">
+                                        <div class="employer-image">
+                                            <img src="assets/images/companies_logo/logo-6.jpg" alt="">
+                                        </div>
+                                        <div class="employer-info-top">
+                                            <span class="employer-location"><i class="lnr lnr-map-marker"></i>Seville, Andalusia</span>
+                                            <h3 class="employer-name"><a href="employer-details.html">Digital Vine <i class="fas fa-check-circle"></i></a></h3>
+                                            <div class="employer-info-rate d-flex align-items-center">
+                                                <div class="star">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span class="total">3 Ratings </span>
+                                            </div>
+                                            <a href="#" class="link-openjobs">3 opportunities</a>
+                                        </div>
+                                    </div>
+                                    <!-- Single Employer Item End -->
+
+                                </div>
+                            </div>
+                            <div id="featured" class="tab-pane fade">
+                                <div class="border-top-left employer-slider">
+
+                                    <!-- Single Employer Item Start -->
+                                    <div class="employer-item">
+                                        <span class="featured-employer-label color-green">Featured</span>
+                                        <div class="employer-image">
+                                            <img src="assets/images/companies_logo/logo-3.jpg" alt="">
+                                        </div>
+                                        <div class="employer-info-top">
+                                            <span class="employer-location"><i class="lnr lnr-map-marker"></i> Osaka, Osaka</span>
+                                            <h3 class="employer-name"><a href="employer-details.html">Shippo Company</a></h3>
+                                            <div class="employer-info-rate d-flex align-items-center">
+                                                <div class="star">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span class="total">1 Ratings </span>
+                                            </div>
+                                            <a href="#" class="link-openjobs">1 opportunitiy</a>
+                                        </div>
+                                    </div>
+                                    <!-- Single Employer Item End -->
+
+                                    <!-- Single Employer Item Start -->
+                                    <div class="employer-item">
+                                        <span class="featured-employer-label color-green">Featured</span>
+                                        <div class="employer-image">
+                                            <img src="assets/images/companies_logo/logo-4.jpg" alt="">
+                                        </div>
+                                        <div class="employer-info-top">
+                                            <span class="employer-location"><i class="lnr lnr-map-marker"></i>  Chicago, California</span>
+                                            <h3 class="employer-name"><a href="employer-details.html">Alpha Investing <i class="fas fa-check-circle"></i></a></h3>
+                                            <div class="employer-info-rate d-flex align-items-center">
+                                                <div class="star">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span class="total">1 Ratings </span>
+                                            </div>
+                                            <a href="#" class="link-openjobs">2 opportunities</a>
+                                        </div>
+                                    </div>
+                                    <!-- Single Employer Item End -->
+
+                                    <!-- Single Employer Item Start -->
+                                    <div class="employer-item">
+                                        <span class="featured-employer-label color-green">Featured</span>
+                                        <div class="employer-image">
+                                            <img src="assets/images/companies_logo/logo-5.jpg" alt="">
+                                        </div>
+                                        <div class="employer-info-top">
+                                            <span class="employer-location"><i class="lnr lnr-map-marker"></i>  New York, New York</span>
+                                            <h3 class="employer-name"><a href="employer-details.html">Radio Game</a></h3>
+                                            <div class="employer-info-rate d-flex align-items-center">
+                                                <div class="star">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span class="total">3 Ratings </span>
+                                            </div>
+                                            <a href="#" class="link-openjobs">4 opportunities</a>
+                                        </div>
+                                    </div>
+                                    <!-- Single Employer Item End -->
+
+                                    <!-- Single Employer Item Start -->
+                                    <div class="employer-item">
+                                        <div class="employer-image">
+                                            <img src="assets/images/companies_logo/logo-6.jpg" alt="">
+                                        </div>
+                                        <div class="employer-info-top">
+                                            <span class="employer-location"><i class="lnr lnr-map-marker"></i>Seville, Andalusia</span>
+                                            <h3 class="employer-name"><a href="employer-details.html">Digital Vine <i class="fas fa-check-circle"></i></a></h3>
+                                            <div class="employer-info-rate d-flex align-items-center">
+                                                <div class="star">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span class="total">3 Ratings </span>
+                                            </div>
+                                            <a href="#" class="link-openjobs">3 opportunities</a>
+                                        </div>
+                                    </div>
+                                    <!-- Single Employer Item End -->
+
+                                </div>
+                            </div>
+                            <div id="newest" class="tab-pane fade">
+                                <div class="border-top-left employer-slider">
+
+                                    <!-- Single Employer Item Start -->
+                                    <div class="employer-item">
+                                        <div class="employer-image">
+                                            <img src="assets/images/companies_logo/logo-2.jpg" alt="">
+                                        </div>
+                                        <div class="employer-info-top">
+                                            <span class="employer-location"><i class="lnr lnr-map-marker"></i>  Victoria</span>
+                                            <h3 class="employer-name"><a href="employer-details.html">Liquididea Design</a></h3>
+                                            <div class="employer-info-rate d-flex align-items-center">
+                                                <div class="star">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span class="total">2 Ratings </span>
+                                            </div>
+                                            <a href="#" class="link-openjobs">3 opportunities</a>
+                                        </div>
+                                    </div>
+                                    <!-- Single Employer Item End -->
+
+                                    <!-- Single Employer Item Start -->
+                                    <div class="employer-item">
+                                        <span class="featured-employer-label color-green">Featured</span>
+                                        <div class="employer-image">
+                                            <img src="assets/images/companies_logo/logo-4.jpg" alt="">
+                                        </div>
+                                        <div class="employer-info-top">
+                                            <span class="employer-location"><i class="lnr lnr-map-marker"></i>  Chicago, California</span>
+                                            <h3 class="employer-name"><a href="employer-details.html">Alpha Investing <i class="fas fa-check-circle"></i></a></h3>
+                                            <div class="employer-info-rate d-flex align-items-center">
+                                                <div class="star">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span class="total">1 Ratings </span>
+                                            </div>
+                                            <a href="#" class="link-openjobs">2 Jobs</a>
+                                        </div>
+                                    </div>
+                                    <!-- Single Employer Item End -->
+
+                                    <!-- Single Employer Item Start -->
+                                    <div class="employer-item">
+                                        <span class="featured-employer-label color-green">Featured</span>
+                                        <div class="employer-image">
+                                            <img src="assets/images/companies_logo/logo-5.jpg" alt="">
+                                        </div>
+                                        <div class="employer-info-top">
+                                            <span class="employer-location"><i class="lnr lnr-map-marker"></i>  New York, New York</span>
+                                            <h3 class="employer-name"><a href="employer-details.html">Radio Game</a></h3>
+                                            <div class="employer-info-rate d-flex align-items-center">
+                                                <div class="star">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span class="total">3 Ratings </span>
+                                            </div>
+                                            <a href="#" class="link-openjobs">4 Jobs</a>
+                                        </div>
+                                    </div>
+                                    <!-- Single Employer Item End -->
+
+                                    <!-- Single Employer Item Start -->
+                                    <div class="employer-item">
+                                        <div class="employer-image">
+                                            <img src="assets/images/companies_logo/logo-6.jpg" alt="">
+                                        </div>
+                                        <div class="employer-info-top">
+                                            <span class="employer-location"><i class="lnr lnr-map-marker"></i>Seville, Andalusia</span>
+                                            <h3 class="employer-name"><a href="employer-details.html">Digital Vine <i class="fas fa-check-circle"></i></a></h3>
+                                            <div class="employer-info-rate d-flex align-items-center">
+                                                <div class="star">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span class="total">3 Ratings </span>
+                                            </div>
+                                            <a href="#" class="link-openjobs">3 Jobs</a>
+                                        </div>
+                                    </div>
+                                    <!-- Single Employer Item End -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Featured Employer End -->
+        {% endif %}
+        <!-- Recruit Section Start -->
+        <div class="recruit-section section pt-120 pt-lg-100 pt-md-80 pt-sm-60 pt-xs-50 pb-120 pb-lg-100 pb-md-80 pb-sm-60 pb-xs-50 bg_image-recruit">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="offset-lg-6 col-lg-6">
+                        <div class="recruit-content">
+                            <h3 class="title">Recruit talent candidates</h3>
+                            <h4 class="sub-title">Faster with Plumar</h4>
+                            <p>Outsourcing all or part of your personnel management function can bring real efficiencies to your own business.</p>
+                            <div class="recruit-list">
+                                <ul>
+                                    <li>
+                                        <span class="list-icon"><i aria-hidden="true" class="fas fa-check"></i></span>
+                                        <span class="list-text">Concentrate on your own core business</span>
+                                    </li>
+                                    <li>
+                                        <span class="list-icon"><i aria-hidden="true" class="fas fa-check"></i></span>
+                                        <span class="list-text">Improve effi­­ci­­en­­ci­­es by HR resources</span>
+                                    </li>
+                                    <li>
+                                        <span class="list-icon"><i aria-hidden="true" class="fas fa-check"></i></span>
+                                        <span class="list-text">Access to the very best profes­­si­­onals</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="recruit-action mt-60 mt-xs-30">
+                                <a class="ht-btn theme-btn mr-30" href="{% url 'talents' %}">Recruit With Us</a>
+                                <a class="ht-btn theme-btn transparent-btn venobox" data-autoplay="true" data-vbtype="video" href="https://www.youtube.com/watch?v=XSGBVzeBUbk"><i class="fa fa-play"></i> Watch Tutorials</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Recruit Section Start -->
+
+        <!-- Pricing Plan Section Start -->
+        <div class="pricing-plan-section section pt-0 pt-lg-0 pt-md-0 pt-sm-60 pt-xs-50 pb-90 pb-lg-70 pb-md-50 pb-sm-30 pb-xs-20">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title-wrap mb-45 mb-xs-30">
+                            <div class="section-title">
+                                <h3 class="title text-uppercase">Select Pricing Plan</h3>
+                               
+                            </div>
+                            <div class="jetapo-link">
+                                <a href="{% url 'dash' %}"> Learn More <i class="lnr lnr-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-gutters align-items-end align-content-end">
+                    {% for data in listings %}
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <!-- Single Pricing Start -->
+                        <div class="pricing-wrap mb-30">
+                            <div class="single-pricing">
+                                <div class="item-header">
+                                    <h2 class="title">{{data.name}}</h2>
+                                    {% if package.package_name_id == data.id and package.posted_opportunity != 0 and package.verified == True  %}
+                                        <span class="badge badge-success badge-lg" >Latest Paid <i class="fa fa-check text-white"></i></span>
+                                    {% else %}
+                                        <div class="mt-4" ></div>
+                                    {% endif %}
+                                    
+                                </div>
+                                <div class="price-table-tag">
+                                    <div class="price-tag currency-placement-left">
+                                        <div class="pricing-price-amount">
+                                            <span class="price-currency currency">$ </span>
+                                            <span class="price-amount">{{data.charge}} </span>
+                                        </div>
+                                    </div>
+                                    <!-- <span class="price-period">monthly </span> -->
+                                </div>
+                                <div class="price-table-feature d-flex flex-column text-center">
+                                    <ul class="list-box-feature">
+                                        {% if data.opportunity_listing == 'Yes' %}
+                                        <li class="item-list-feature"><i class="fa fa-check"></i><span>Opportunity listing</span></li>
+                                        {% else %}
+                                        <li class="item-list-feature"><i class="fa fa-times text-danger"></i><span>Opportunity listing</span></li>
+                                        {% endif %}
+            
+                                        {% if data.talent_due_deligency == 'Yes' %}
+                                        <li class="item-list-feature"><i class="fa fa-check"></i><span>alent Due Diligence</span></li>
+                                        {% else %}
+                                        <li class="item-list-feature"><i class="fa fa-times text-danger"></i><span>alent Due Diligence</span></li>
+                                        {% endif %}
+            
+                                        {% if data.legal == 'Yes' %}
+                                        <li class="item-list-feature"><i class="fa fa-check"></i><span>Legal</span></li>
+                                        {% else %}
+                                        <li class="item-list-feature"><i class="fa fa-times text-danger"></i><span>Legal</span></li>
+                                        {% endif %}
+            
+                                        {% if data.payroll == 'Yes' %}
+                                        <li class="item-list-feature"><i class="fa fa-check"></i><span>Payroll</span></li>
+                                        {% else %}
+                                        <li class="item-list-feature"><i class="fa fa-times text-danger"></i><span>Payroll</span></li>
+                                        {% endif %}
+                                        <!-- <li class="item-list-feature"><i class="fa fa-times text-danger"></i><span>Talent Due Diligence</span></li>
+                                        <li class="item-list-feature"><i class="fa fa-times text-danger"></i><span>Legal</span></li>
+                                        <li class="item-list-feature"><i class="fa fa-times text-danger"></i><span>Payroll</span></li> -->
+                                    </ul>
+                                </div>
+                                <div class="item_button">
+                                    {% if user.is_authenticated and request.user.profile.user_type == 'startup' %}
+                                        {% if package.package_name_id == data.id and package.posted_opportunity != '0' and package.verified == True  %}
+                                        <a data-toggle="modal" data-target="#pay{{data.id}}" class="ht-btn transparent-btn-two" href="#">Pay More </a>
+                                        {% else %}
+                                        <a data-toggle="modal" data-target="#pay{{data.id}}" class="ht-btn transparent-btn-two" href="#">Start Now </a>
+                                        {% endif %}
+                                    {% else %}
+                                    <a class="ht-btn transparent-btn-two error">Start Now </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Pricing End -->
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% include 'dash/includes/modals.html' %}
+
+
+
+        <!-- Pricing Plan Section End -->
+
+        <!-- Testimonial Section Start -->
+        <!-- <div class="testimonial-section section pb-120 pb-lg-100 pb-md-80 pb-sm-60 pb-xs-35">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="testimonial-left-content">
+                            <h3 class="title">Trusted by +25,000 users</h3>
+                            <p>Our client’s opinions are<strong> extremely valuable</strong> to us which is <br>why we communicate openly with them on a regular basis. <br>We are not just meeting their expectations.</p>
+                                <img src="{% static 'assets/img/testimoials-demo.png' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="testimonial-slider-two row">
+
+                            <div class="col-lg-12">
+                              
+                                <div class="single-testimonial bg-offWhite mb-30">
+                                    <div class="testimonial-author">
+                                        <div class="testimonial-avatar">
+                                            <img src="assets/images/testimonial/testimonial-1.png" alt="">
+                                        </div>
+                                        <div class="testimonial-meta">
+                                            <h5 class="name">Kilian Sanjeev</h5>
+                                            <p class="text">
+                                                <span class="position">CEO at</span>
+                                                <span class="company theme-color">Alpha Investing</span>
+                                            </p>
+                                        </div>
+                                        <span class="icon-quote theme-color">
+                                        <i class="fas fa-quote-right"></i>
+                                    </span>
+                                    </div>
+                                    <div class="testimonial-comment">
+                                        <p>"I am so pleased with this product. Jopota Recruitment has completely surpassed our expectations. If you aren't sure, always go for Jopota Recruitment. Jopota Recruitment is the real deal!"</p>
+                                    </div>
+                                </div>
+                            
+                            </div>
+
+                            <div class="col-lg-12">
+                              
+                                <div class="single-testimonial bg-offWhite mb-30">
+                                    <div class="testimonial-author">
+                                        <div class="testimonial-avatar">
+                                            <img src="assets/images/testimonial/testimonial-2.png" alt="">
+                                        </div>
+                                        <div class="testimonial-meta">
+                                            <h5 class="name">Arina Sebastian</h5>
+                                            <p class="text">
+                                                <span class="position">Freelance Designer</span>
+                                            </p>
+                                        </div>
+                                        <span class="icon-quote theme-color">
+                                        <i class="fas fa-quote-right"></i>
+                                    </span>
+                                    </div>
+                                    <div class="testimonial-comment">
+                                        <p>"I am so pleased with this product. Jopota Recruitment has completely surpassed our expectations. If you aren't sure, always go for Jopota Recruitment. Jopota Recruitment is the real deal!"</p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="col-lg-12">
+                              
+                                <div class="single-testimonial bg-offWhite mb-30">
+                                    <div class="testimonial-author">
+                                        <div class="testimonial-avatar">
+                                            <img src="assets/images/testimonial/testimonial-3.jpg" alt="">
+                                        </div>
+                                        <div class="testimonial-meta">
+                                            <h5 class="name">Kilian Sanjeev</h5>
+                                            <p class="text">
+                                                <span class="position">Freelance Designer at</span>
+                                                <span class="company theme-color">Alpha</span>
+                                            </p>
+                                        </div>
+                                        <span class="icon-quote theme-color">
+                                        <i class="fas fa-quote-right"></i>
+                                    </span>
+                                    </div>
+                                    <div class="testimonial-comment">
+                                        <p>"I am so pleased with this product. Jopota Recruitment has completely surpassed our expectations. If you aren't sure, always go for Jopota Recruitment. Jopota Recruitment is the real deal!"</p>
+                                    </div>
+                                </div>
+                             
+                            </div>
+
+                            <div class="col-lg-12">
+                               
+                                <div class="single-testimonial bg-offWhite mb-30">
+                                    <div class="testimonial-author">
+                                        <div class="testimonial-avatar">
+                                            <img src="assets/images/testimonial/testimonial-4.jpg" alt="">
+                                        </div>
+                                        <div class="testimonial-meta">
+                                            <h5 class="name">Vinicius Wiesehofer</h5>
+                                            <p class="text">
+                                                <span class="position">Freelance Designer </span>
+                                            </p>
+                                        </div>
+                                        <span class="icon-quote theme-color">
+                                        <i class="fas fa-quote-right"></i>
+                                    </span>
+                                    </div>
+                                    <div class="testimonial-comment">
+                                        <p>"I am so pleased with this product. Jopota Recruitment has completely surpassed our expectations. If you aren't sure, always go for Jopota Recruitment. Jopota Recruitment is the real deal!"</p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Testimonial Section End -->
+
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $('#noto').delay(5000).fadeOut('slow');
+        $('.error').on('click', function(){
+            swal({
+                title: 'You have to be registered as startup',
+                text: 'Only startup have an ability to Pay for Packages.',
+                icon: "info",
+                buttons: true,
+                timer: 5000,
+                
+            })
+    })
+    </script>
+
+
+
+
+
+    
+{% endblock contents %}

@@ -1,0 +1,552 @@
+{% extends 'base.html' %}
+{% load social_share %}
+{% load static %}
+
+{% block title %}
+    <title>Plumar | Opportunities</title>
+{% endblock title %}
+
+{% block header %}
+{% endblock header %}
+
+{% block contents %}
+{% include 'includes/nav.html' %}
+
+
+<!-- Breadcrumb Section Start -->
+<div class="breadcrumb-section section bg_color--5 pt-60 pt-sm-50 pt-xs-40 pb-60 pb-sm-50 pb-xs-40">
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <div class="page-breadcrumb-content">
+                <ul class="page-breadcrumb">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'opportunity' %}">Opportunities</a></li>
+                    <li>{{ data.title }}</li>
+                </ul>
+                <h1>{{ data.title }}</h1>
+            </div>
+            <div class="job-meta-detail">
+                <ul>
+                    <li class="posted">
+                        <i class="lnr lnr-clock"></i>
+                        <span class="text">Posted: </span>
+                        <span class="time">{{ data.published }} </span>
+                    </li>
+                    <li class="expries">
+                        <i class="lnr lnr-hourglass"></i>
+                        <span class="text">Expries in: </span>
+                        <span class="date bg-warning"> {{ data.deadline|date:"M d, Y" }} </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="sidebar-wrapper-three">
+                <div class="common-sidebar-widget sidebar-three mb-0 pb-0">
+                    <div class="sidebar-job-share">
+                        <div class="job-share candidate-action">
+                            <ul>
+                                {% if user.is_authenticated and user.profile.user_type == 'talent' %}
+                                <li class="bg-warning">
+                                    <a onMouseOver="this.style.background='#fcc102'" class="text-dark" style="border-color: #fcc102;" href="#">
+                                    <form action="{% url 'mark' %}" method="post">
+                                        {% csrf_token %}
+                                        {% if request.user in data.marked.all %}
+                                        <buttom type=submit id="mark" class="save-job save{{data.id}} bg-transparent" value="{{data.id}}">
+                                            <i id="mark2{{ data.id }}" class="fas fa-bookmark text-dark"  ></i>
+                                            <span class="save2{{data.id}} text-dark text-dark " >Saved</span>
+                                        </button>
+                                        {% else %}
+                                        <buttom type=submit id="mark" class="save-job save{{data.id}} bg-transparent " value="{{data.id}}">
+                                            <i id="mark2{{ data.id }}" class="far fa-bookmark text-dark"></i>
+                                            <span class="save2{{data.id}} text-dark " style="font-size: 15px;" >Save</span>
+                                        </button>
+                                        {% endif %}
+                                    </form>
+                                    </a>
+                                </li>
+                                {% endif %}
+                                {% include 'includes/social_share.html' %}
+                                <!-- <li><a href="#"><i class="lnr lnr-warning"></i> <span class="text">Report </span></a></li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Breadcrumb Section Start -->
+
+
+
+<!-- Job Meta Detail Box Section Start -->
+<div class="job-meta-detail-box section bg_color--5 pb-120 pb-lg-100 pb-md-80 pb-sm-60 pb-xs-50">
+    <div class="container">
+        <div class="row no-gutters">
+
+            <div class="col-lg-4 col-md-6">
+                <!-- Single Meta Field Start -->
+                <div class="single-meta-field">
+                    <div class="field-label">
+                        <i class="lnr lnr-map-marker text-warning "></i>
+                        <span>Work Location: </span>
+                    </div>
+                    <div class="field-value">{{ data.location }}</div>
+                </div>
+                <!-- Single Meta Field Start -->
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <!-- Single Meta Field Start -->
+                <div class="single-meta-field">
+                    <div class="field-label">
+                        <i class="lnr lnr-layers text-warning "></i>
+                        <span>Salary </span>
+                    </div>
+                    <div class="field-value salary">{{ data.salary_range }} / month</div>
+                </div>
+                <!-- Single Meta Field Start -->
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <!-- Single Meta Field Start -->
+                <div class="single-meta-field">
+                    <div class="field-label">
+                        <i class="lnr lnr-briefcase text-warning "></i>
+                        <span>Type </span>
+                    </div>
+                    <div class="field-value"><a class="fw-600 text-warning" href="#">{{ data.category }}</a></div>
+                </div>
+                <!-- Single Meta Field Start -->
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <!-- Single Meta Field Start -->
+                <div class="single-meta-field">
+                    <div class="field-label">
+                        <i class="lnr lnr-tag text-warning "></i>
+                        <span>Sector </span>
+                    </div>
+                    <div class="field-value"><a class="text-warning" href="#">{{ data.sector }}</a></div>
+                </div>
+                <!-- Single Meta Field Start -->
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <!-- Single Meta Field Start -->
+                <div class="single-meta-field">
+                    <div class="field-label">
+                        <i class="lnr lnr-graduation-hat text-warning"></i>
+                        <span>Experience </span>
+                    </div>
+                    <div class="field-value"><a class="text-warning" href="#"> {{ data.experience }} years</a></div>
+                </div>
+                <!-- Single Meta Field Start -->
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <!-- Single Meta Field Start -->
+                <div class="single-meta-field">
+                    <div class="field-label">
+                        <i class="lnr lnr-hourglass text-warning"></i>
+                        <span>Deadline </span>
+                    </div>
+                    <div class="field-value"><a class="text-warning" href="#">{{ data.deadline }}</a></div>
+                </div>
+                <!-- Single Meta Field Start -->
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Job Meta Detail Box Section End -->
+
+<!-- Job Details Section Start -->
+<div class="job-details-section section pt-120 pt-lg-100 pt-md-80 pt-sm-50 pt-xs-40 pb-120 pb-lg-100 pb-md-80 pb-sm-60 pb-xs-50">
+
+    <div class="container">
+       
+        <div class="row">
+
+            <div class="col-lg-4 order-lg-2 order-2 mt-sm-60 mt-xs-50">
+                <div id="noto">
+                    <div class="text-center" id="alert"></div>
+                </div>
+                <div class="sidebar-wrapper-three">
+                    <div class="common-sidebar-widget sidebar-three">
+                        <div class="sidebar-job-apply">
+                            {% if user.is_authenticated %}
+                            <div class="action-button">
+                                {% if request.user.profile.user_type == 'talent' %}
+                                <form  method="post" id="form1">
+                                 {% csrf_token %} 
+                                     <input type="hidden" id="opportunity" name="opportunity" value="{{data.id}}">
+                                     <input type="hidden" id="startup" name="startup" value="{{ data.user.id }}"> 
+                                     <button id="submit" class="ht-btn text-center" href="#">Get Matched <i class="ml-10 mr-0 fa fa-paper-plane"></i></button>
+                                </form>
+                                {% else %}
+                                <button  class="ht-btn text-center submit" href="#">Get Matched<i class="ml-10 mr-0 fa fa-paper-plane"></i></button>
+                                {% endif %}
+                                <!-- <span>Or Apply With</span>
+                                <div class="line"></div>
+                                <a class="ht-btn facebook-btn text-center" href="#">Apply With Facebook <i class="ml-10 mr-0 fab fa-facebook-f"></i></a>
+                                <a class="ht-btn linkedin-btn text-center" href="#">Apply With Linkedin <i class="ml-10 mr-0 fab fa-linkedin-in"></i></a> -->
+                            </div>
+                            {% else %}
+                            <button  class="ht-btn text-center submit2" href="#">Get Matched<i class="ml-10 mr-0 fa fa-paper-plane"></i></button>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <!-- <div class="common-sidebar-widget sidebar-three">
+                        <div class="sidebar-job-share">
+                            <div class="job-share">
+                                <ul>
+                                    <li><a href="#"><i class="lnr lnr-heart"></i> <span class="text">Save </span></a></li>
+                                    <li><a href="#"><i class="lnr lnr-bubble"></i> <span class="text">Share </span></a>
+                                        <ul class="social-share">
+                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="#"><i class="far fa-envelope"></i></a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#"><i class="lnr lnr-warning"></i> <span class="text">Report </span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="common-sidebar-widget sidebar-three">
+                        <div class="sidebar-job-employer">
+                            <div class="job-employer-widget">
+                                <div class="image">
+                                    <img src="{{ data.user.profile.image.url }}" alt="">
+                                </div>
+                                <div class="content-box">
+                                    <p class="location">
+                                        <i class="lnr lnr-map-marker"></i>
+                                        Hanoi, Hà Nội
+                                    </p>
+                                    <h4 class="title">
+                                        <a href="#">InwaveThemes </a><i class="fas fa-check-circle"></i>
+                                    </h4>
+                                    <div class="employer-rate">
+                                        <div class="star">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span class="text">5 Ratings </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="common-sidebar-widget sidebar-three">
+                        <h2 class="sidebar-title">Location</h2>
+                        <div class="sidebar-map">
+                            <iframe class="contact-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2136.986005919501!2d-73.9685579655238!3d40.75862446708152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258e4a1c884e5%3A0x24fe1071086b36d5!2sThe%20Atrium!5e0!3m2!1sen!2sbd!4v1585132512970!5m2!1sen!2sbd" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                    </div> -->
+                    <div class="common-sidebar-widget sidebar-three">
+                        <h2 class="sidebar-title">Recent Jobs By This Employer</h2>
+                        <div class="sidebar-job">
+                            <div class="row">
+                                {% for data in opportunities %}
+                                <div class="col-lg-12">
+                                    <!-- Single Job Start  -->
+                                    <div class="single-job style-two">
+                                        <div class="info-top">
+                                            <div class="job-info">
+                                                <div class="job-info-inner">
+                                                    <div class="job-info-top">
+                                                        <div class="title-name">
+                                                            <h5 class="job-title">
+                                                                <a id="url" data-url="{% url 'opp_details' data.id %}" href="{% url 'opp_details' data.id %}">{{ data.title }}</a>
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="job-meta-two flex-wrap">
+                                                        <div class="field-salary_from">
+                                                            <i class="gj-icon gj-icon-money"></i>
+                                                            {{  data.salary_range }}/ month
+                                                        </div>
+                                                        <div class="field-datetime"><i class="lnr lnr-clock"></i>{{ data.published }}</div>
+                                                        <div class="field-map"><i class="lnr lnr-map-marker"></i>{{ data.location }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Single Job End -->
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="common-sidebar-widget sidebar-three">
+                        <div class="sidbar-image">
+                            <a href="#">
+                                <img src="{% static 'assets/images/banner/ads-two.jpg' %}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8 order-lg-1 order-1 pr-55 pr-md-15 pr-sm-15 pr-xs-15">
+
+                <div class="job-detail-content">
+                    <div class="field-descriptions mb-60 mb-sm-30 mb-xs-30">
+                        <p>{{ data.description|safe }}</p>
+
+                        <h3>Skills Required</h3>
+
+                        <ul>
+                            {{ data.skills_required|safe }}
+                        </ul>
+
+                        <h3>Duties and Responsibilities</h3>
+
+
+                        <ul>
+                            {{ data.duties_and_responsibilities|safe }}
+                        </ul>
+
+                   
+                        <p><strong>How to Get Match to this Job?</strong></p>
+
+                        <ul>
+                            <li>Click a Get Matched button below</li>
+                            <li>Then visit your dashbord for updates</li>
+                            <!-- <li>Company trip, team-building events</li>
+                            <li>13th salary and project bonus</li>
+                            <li>Work-from-home poLicy</li>
+                            <li>Support Laptop</li>
+                            <li>Extra healthcare package</li> -->
+                        </ul>
+                    </div>
+                    {% if user.is_authenticated %}
+                    <div class="job-apply mb-4">
+                        {% if request.user.profile.user_type == 'talent' %}
+                       <form  method="post" id="form">
+                        {% csrf_token %} 
+                            <input type="hidden" id="opportunity" name="opportunity" value="{{data.id}}">
+                            <input type="hidden" id="startup" name="startup" value="{{ data.user.id }}">  
+                            <button id="submit" class="ht-btn text-center" href="#">Get Matched <i class="ml-10 mr-0 fa fa-paper-plane"></i></button>
+                       </form>
+                       {% else %}
+                       <button  class="ht-btn text-center submit" href="#">Get Matched<i class="ml-10 mr-0 fa fa-paper-plane"></i></button>
+                       {% endif %}
+                    </div>
+                    {% else %}
+                    <button class="ht-btn text-center submit2" href="#">Get Matched<i class="ml-10 mr-0 fa fa-paper-plane"></i></button>
+                    {% endif %}
+                    <div class="text-center" id="alert2">
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Job Details Section End -->
+
+<!-- Job Grid Section Start -->
+<div class="job-grid-section section bg_color--5 pt-120 pt-lg-100 pt-md-80 pt-sm-60 pt-xs-50 pb-120 pb-lg-100 pb-md-80 pb-sm-60 pb-xs-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title-four mb-40">
+                    <h3>Related Jobs</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row job-grid-slider">
+            {% for data in all %}
+            <div class="col-md-4">
+                <!-- Single Job Start  -->
+                <div class="single-job-grid-two">
+                    <div class="saveJob-grid">
+                        <a class="job-type-label remote" href="#">{{ data.category }}</a>
+                        {% if request.user in data.marked.all %}
+                            <a class="save-job text-danger">
+                            <i class="fas fa-bookmark text-danger"></i>Saved </a>
+                        {% else %}
+                        <a class="save-job text-danger">
+                            <i class="far fa-bookmark text-danger"></i>Save </a>
+                        {% endif %}
+                    </div>
+                    <div class="job-image">
+                        <a href="#">
+                            {% if data.logo %}
+                            <img style=" height: 70px;" src="{{ data.logo.url }}" alt="">
+                            {% endif %}
+                        </a>
+                        <span class="featured-label for-grid">featured</span>
+                    </div>
+                    <div class="job-info">
+                        <div class="job-info-top">
+                            <div class="title-name">
+                                <h3 class="job-title">
+                                    <a href="#">{{ data.title }}</a>
+                                </h3>
+                                <div class="employer-name">
+                                    <a href="#">{{ data.startup_name }}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-meta-two">
+                            <div class="field-salary_from">
+                                <i class="gj-icon gj-icon-money"></i>
+                                {{data.salary_range}} / month
+                            </div>
+                            <div class="field-datetime"><i class="lnr lnr-clock"></i>{{ data.published }}</div>
+                            <div class="field-map"><i class="lnr lnr-map-marker"></i>{{ data.location }}</div>
+                        </div>
+                        <div class="job-skill-tag">
+                            <a href="#">Android</a>
+                            <a href="#">app</a>
+                            <a href="#">ReactJs</a>
+                            <a href="#">Ruby</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Job End -->
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+<!-- Job Grid Section End -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+
+    function match(){
+         console.log('working fine')
+         console.log($('#opp').val())
+        $.ajax({
+            type: 'POST',
+            url: '{% url "add_match" %}',
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                the_startup: $('#startup').val(),
+                the_opp: $('#opportunity').val()
+            },
+
+            success: function(json){
+                console.log(json)
+                console.log('success')
+                if(json.result == 'You have already matched this opportunity.'){
+                    swal({
+                        title: json.result,
+                        text: 'You can not match an opportunity twice',
+                        icon: "warning",
+                        buttons: false,
+                        timer: 3000,
+                    })
+                }else if(json.result == 'Match submited'){
+                    swal({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'You just got matched to an opportunity',
+                        buttons: false,
+                        timer: 3000,
+                    });
+                }
+                
+                // $('#alert').html("<div class='alert alert-success alert-dismissible fade show mt-3 ' data-alert><Strong></strong> "+json.result+
+                // " <a href='#' class='close' data-dismiss='alert' aria-label=Close'>&times;</a></div>");
+                // $('#alert2').html("<div class='alert alert-success alert-dismissible fade show mt-3 ' data-alert><Strong></strong> "+json.result+
+                // " <a href='#' class='close' data-dismiss='alert' aria-label=Close'>&times;</a></div>");
+            }
+        });
+         
+    }
+
+    $('#form').on('submit', function(event){
+        event.preventDefault();
+        console.log('Works too on submit');
+        match();
+    });
+    $('#form1').on('submit', function(event){
+        event.preventDefault();
+        console.log('Works too on submit form1');
+        match();
+    });
+
+
+
+    $('.submit').on('click', function(){
+        swal({
+            title: 'Your are registered as start-up',
+            text: 'You have to be a talent to get matched ',
+            icon: "info",
+            buttons: false,
+            timer: 5000,
+            
+        })
+    })
+
+
+
+    $('.submit2').on('click', function(){
+        swal({
+            title: 'Your have to be a registered user to get matched',
+            text: 'if you have a talent account login to get matched to this opportunity, else register first',
+            icon: "info",
+            buttons: true,
+            timer: 5000,
+            
+        })
+    })
+
+
+
+//below is the script for bookmark button ajax call
+
+    $(document).on('click', '#mark', function(e){
+                e.preventDefault();
+
+                var pk = $(this).attr('value');
+                
+                $.ajax({
+                    type:'POST',
+                    url:'{% url "mark" %}',
+                    data:{
+                        'id':pk,
+                        'csrfmiddlewaretoken':'{{csrf_token}}'
+                    },
+                    success:function(response){
+                        console.log(response)
+                        // for toggling icon on list view
+                        $("#mark"+pk).toggleClass('far fa-bookmark fas fa-bookmark')
+                        //for toggling icon on grid view
+                        $("#mark2"+pk).toggleClass('far fa-bookmark fas fa-bookmark')
+                       
+                        // for grid  view on to change text on successfull post
+                        if($('.save2'+pk).text() == 'Save'){
+                            $('.save2'+pk).text('Saved')  
+                        }
+                        else {
+                            $('.save2'+pk).text('Save')
+                        }
+                
+                    },
+                    errror: function(rs,e){
+                        console.log(rs.responseText);
+                    }
+                })
+            })
+
+   
+</script>
+
+{% endblock %}

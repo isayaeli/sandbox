@@ -1,0 +1,227 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    <title>Plumar | Skills</title>
+{% endblock title %}
+
+{% block header %}
+{% endblock header %}
+
+{% block contents %}
+{% include 'includes/nav.html' %}
+<style>
+    #id_still_working li{
+        display: inline-flex;
+        margin-left: 20px;
+        
+        justify-content: space-between;
+    }
+    /* input[type="radio"]{margin: 0px 20px}; */
+</style>
+
+        <!-- Dashboard Content Section Start -->
+        <div class="dashboard-content-section section bg_color--5">
+            <div class="container-fluid p-0">
+                <div class="row no-gutters">
+                    <div class="col-xl-2 col-lg-3">
+                        {% include 'talent_dash/includes/sidebar.html' %}
+                    </div>
+                    <div class="col-xl-10 col-lg-9">
+
+                        <div class="dashboard-main-inner">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="page-breadcrumb-content mb-40">
+                                        <h1>Skills</h1>
+                                    </div>
+                                </div>
+                                <div class="col-7">
+                                    {% if messages %}
+                                        {% for message in messages %}
+                                            {% if message.tags == 'success' %}
+                                                <div  id="noto" class="alert alert-success"><i class="bi bi-check-circle"></i> 
+                                                    {{ message }}
+                                                </div>
+                                            {% endif %}
+                                            {% if message.tags == 'error' %}
+                                                <div id="noto" class="alert alert-danger bg-danger alert-dismissible fade show ">
+                                                    <span class="text-white" >{{ message }}</span>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                
+                            </div>
+                            <div class="dashboard-overview">
+                                <div class="row">
+                                    <div class="col-xl-12 col-12">
+                                        <div class="profile-applications mb-50">
+                                            <!-- <div class="profile-applications-heading">
+                                                <ul class="nav">
+                                                    <li><a class="active" href="profile.html">My profile</a></li>
+                                                    <li><a href="resume-profile.html">Resume profile</a></li>
+                                                </ul>
+                                            </div> -->
+                                            <div class="profile-applications-main-block">
+                                                <div class="profile-applications-form">
+                                                   <div class="row pb-20">
+                                                       {% for data in skills %}
+                                                       <div class="col-sm-3 mb-3 text-center">
+                                                         <div class="bg-warning  pl-4 pr-4" style="border-radius: 10px;" >
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <a class="text-dark"  data-bs-toggle="modal" data-bs-target=".edit{{data.id}}"><i class="lnr lnr-pencil" ></i></a>
+                                                                    <a class="text-dark ml-4" data-bs-target="#delete{{ data.id }}" data-bs-toggle="modal"><i class="fa fa-trash" ></i></a>
+                                                                </div>
+                                                            </div>
+                                                            <h6 class="font-weight-bold  pt-3">{{ data.skill }}</h6>
+                                                            <h6 class="pb-3">{{ data.experience }}</h6>
+                                                         </div>
+                                                       </div>
+                                                       {% empty %}
+                                                       <span>You don't have a skill added yet</span>
+                                                       {% endfor %}
+                                                   </div>
+                                                   <button data-bs-toggle="modal" data-bs-target="#staticBackdrop"  class="btn btn-warning mt-40 font-weight-bold " >Add Skills</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Dashboard Content Section End -->
+
+
+
+        <div class="modal fade add" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Add Skill</h5>
+                  <a type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">&#10006;</a>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'skills' %}" method="post">
+                        {% csrf_token %}
+                        <div class="row mb-20">
+                            <div class="col-md-12">
+                                <label for="">Skill Name</label>
+                                <input type="text" name="skill" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="">Years of Experience</label>
+                                <input type="text" name="experience" class="form-control" placeholder="example 3 years">
+                            </div>
+                        </div>
+
+                        <div class="ml-4 mt-3 mb-20">
+                            <button type="submit" class="btn btn-warning">Submit Now</button>
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+               
+              </div>
+            </div>
+
+
+
+
+            {% for data in skills %}
+            <div class="modal fade edit{{data.id}} " id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title font-weight-bold" id="staticBackdropLabel">Edit {{data.skill}}</h5>
+                      <a type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">&#10006;</a>
+                    </div>
+                    <div class="modal-body" >
+                        <form action="{% url 'edit_skill' data.id %}" method="post" enctype="multipart/form-data" >
+                            {% csrf_token %}
+                            <div class="row mb-20">
+                                <div class="col-md-12">
+                                   <label for="skill">Skill Name</label>
+                                   <input type="text" class="form-control" name="skill" value="{{data.skill}}" > 
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="experience">Experience</label>
+                                    <input type="text" class="form-control" name="experience" value="{{data.experience}}" >
+                                </div>
+                            </div>
+    
+                        
+                        <div class="ml-4 mt-3 mb-20">
+                            <button type="submit" class="btn btn-warning text-white">Submit</button>
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                    </div>
+                       
+                  </div>
+                </div>
+            </div>
+            {%  endfor%}
+
+
+
+
+
+    {% for data in skills %}
+    <div class="modal fade" id="delete{{ data.id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Delete {{data.skill}}</h5>
+              <a type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">&#10006;</a>
+            </div>
+            <div class="modal-body">
+                <span class="text-danger font-weight-bold" >
+                    Are you sure you want to delete {{ data.skill }}?
+                </span>
+            </div>
+            <div class="ml-4 mt-3 mb-20">
+                <a href="{% url 'delete_skill' data.id %}" class="btn btn-danger text-white">Delete</a>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    {% endfor %}
+        
+
+
+
+
+
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" ></script>
+    <script>
+        $('#noto').delay(5000).fadeOut('slow');
+    </script>
+
+    {% endblock contents %}
+
+ 
+    {% block footer %}
+    {% endblock footer %}
+    
