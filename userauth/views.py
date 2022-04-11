@@ -7,8 +7,9 @@ from django.contrib.auth.forms import AuthenticationForm  # add this
 from django.contrib.auth.models import User
 from startups.models import Startup
 from talents.models import Talent
-# def auth_view(request):
-#     return render(request, 'auth/auth.html')
+
+def auth_view(request):
+    return render(request, 'auth/auth.html')
 
 
 def register_request(request):
@@ -31,12 +32,12 @@ def register_request(request):
            
         # messages.error(request, "form is not valid.")
         # return redirect('auth')
-    else:
-        form = NewUserForm()
-    context = {
-        'form':form
-    }
-    return render(request, 'auth/auth.html', context)
+    # else:
+    #     form = NewUserForm()
+    # context = {
+    #     'form':form
+    # }
+    return render(request, 'auth/auth.html')
 
 
 def login_request(request):
@@ -69,7 +70,7 @@ def login_request(request):
             messages.error(request, "Invalid username or password.")
             return redirect('auth')
     form = AuthenticationForm()
-    return redirect('home' )
+    return render(request, 'auth/auth.html')
 
 
 
