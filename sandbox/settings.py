@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tinymce',
     'mathfilters',
-    'social_django',
+    # 'social_django',
     'django_social_share',
     'hitcount',
     'home',
@@ -60,7 +60,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
         #social loging configs
-    'social_django.middleware.SocialAuthExceptionMiddleware',
+    # 'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'sandbox.urls'
@@ -80,8 +80,8 @@ TEMPLATES = [
                 # 'django.template.context_processors.request',
 
                 #social login configs
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect',
+                # 'social_django.context_processors.backends',
+                # 'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -90,12 +90,12 @@ TEMPLATES = [
 # kpyalvgmziafnckb
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'plumartechnical@gmail.com'
-EMAIL_HOST_PASSWORD = 'kpyalvgmziafnckb'
-EMAIL_PORT = 587
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'plumartechnical@gmail.com'
+# EMAIL_HOST_PASSWORD = 'kpyalvgmziafnckb'
+# EMAIL_PORT = 587
 
 
 
@@ -103,33 +103,33 @@ RAVE_PUBLIC_KEY = 'FLWPUBK-beb8a5a0af5c4343b38e5831d6424963-X'
 RAVE_SECRET_KEY = 'FLWSECK-e64b791b6a400370ff9e5a05f91a65cb-X'
 
 
-AUTHENTICATION_BACKENDS = (
-    'social_core.backends.facebook.FacebookOAuth2',
-    'social_core.backends.twitter.TwitterOAuth',
-    # 'social_core.backends.github.GithubOAuth2',
-    'social_core.backends.linkedin.LinkedinOAuth2',
+# AUTHENTICATION_BACKENDS = (
+#     'social_core.backends.facebook.FacebookOAuth2',
+#     'social_core.backends.twitter.TwitterOAuth',
+#     # 'social_core.backends.github.GithubOAuth2',
+#     'social_core.backends.linkedin.LinkedinOAuth2',
 
-    'django.contrib.auth.backends.ModelBackend',
-)
-
-
-LOGIN_URL = 'login'
-LOGOUT_URL = 'logout'
-LOGIN_REDIRECT_URL = 'home'
+#     'django.contrib.auth.backends.ModelBackend',
+# )
 
 
-#facebook configs
-SOCIAL_AUTH_FACEBOOK_KEY = '592228875207376'
-SOCIAL_AUTH_FACEBOOK_SECRET = '049c1a21a88fdf2b6af5df4b26c75ad4'
-
-#twitter login
-SOCIAL_AUTH_TWITTER_KEY = '1XcTXfFBcbQNGwoZkAt0AM13K' 
-SOCIAL_AUTH_TWITTER_SECRET = 'QmK5Eu0rTHc8RoBN2mhoOvjhD2IXbNpjz8l1WANc0D4LqEtKER'
+# LOGIN_URL = 'login'
+# LOGOUT_URL = 'logout'
+# LOGIN_REDIRECT_URL = 'home'
 
 
-#linked in login
-SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = '77bb0nbf2u3lr9'         # Client ID
-SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = 'K3kT9MKhfXAlOHAk'
+# #facebook configs
+# SOCIAL_AUTH_FACEBOOK_KEY = '592228875207376'
+# SOCIAL_AUTH_FACEBOOK_SECRET = '049c1a21a88fdf2b6af5df4b26c75ad4'
+
+# #twitter login
+# SOCIAL_AUTH_TWITTER_KEY = '1XcTXfFBcbQNGwoZkAt0AM13K' 
+# SOCIAL_AUTH_TWITTER_SECRET = 'QmK5Eu0rTHc8RoBN2mhoOvjhD2IXbNpjz8l1WANc0D4LqEtKER'
+
+
+# #linked in login
+# SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = '77bb0nbf2u3lr9'         # Client ID
+# SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = 'K3kT9MKhfXAlOHAk'
 
 
 

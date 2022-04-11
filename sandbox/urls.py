@@ -34,7 +34,7 @@ urlpatterns = [
     path('', include('dashboard.urls')),
 
     #social logins url
-    path('oauth/', include('social_django.urls', namespace='social')), 
+    # path('oauth/', include('social_django.urls', namespace='social')), 
 
 
     path('password-reset/',auth_views.PasswordResetView.as_view(

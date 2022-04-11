@@ -69,7 +69,7 @@ def login_request(request):
         else:
             messages.error(request, "Invalid username or password.")
             return redirect('auth')
-    form = AuthenticationForm()
+    # form = AuthenticationForm()
     return render(request, 'auth/auth.html')
 
 
