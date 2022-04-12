@@ -59,6 +59,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
+           #whitenoise middleware
+     "whitenoise.middleware.WhiteNoiseMiddleware",
+
+
         #social loging configs
     # 'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
