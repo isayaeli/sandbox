@@ -1,3 +1,6 @@
+from sre_constants import CATEGORY
+from sre_parse import CATEGORIES
+from unicodedata import category
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
@@ -97,6 +100,11 @@ CHOICES = (
     ('Yes','Yes'),
      ('No','No')
 )
+CATEGORIES = (
+    ('junior_roles','junior_roles'),
+    ('mid_level_roles','mid_level_roles'),
+    ('senior_roles','senior_roles')
+)
 class Listing(models.Model):
     name = models.CharField(max_length=100)
     charge = models.CharField(max_length=100, default=0)
@@ -104,9 +112,10 @@ class Listing(models.Model):
     talent_due_deligency = models.CharField(max_length=100, choices=CHOICES, default='No')
     legal = models.CharField(max_length=100,choices=CHOICES, default='No')
     payroll = models.CharField(max_length=100,choices=CHOICES, default='No')
+    category = models.CharField(choices=CATEGORIES, max_length=100, null=True)
 
     def __str__(self):
-        return self.name
+        return f"{self.name} {self.category}"
 
 
 
