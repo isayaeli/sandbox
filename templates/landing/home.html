@@ -552,12 +552,12 @@
         <section id="contact" >
             <div class="container">
                 <div class="heading-text heading-section text-center">
-                    <h2>Contact Us</h2>
-                    <p>Be the first to be notified once PLUMAR goes live! To stay on the loop and become one of our early PLUMARers, register below to join our early bird community</p>
+                    <h2>Contacts</h2>
+                    <!-- <p></p> -->
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
-                        <h3 class="text-uppercase">Get In Touch</h3>
+                        <h3 class="text-uppercase">Request A Demo</h3>
                         <div class="m-t-30">
                             <form  action="{% url 'home' %}" role="form" method="post">
                                 {% csrf_token %}
@@ -573,7 +573,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6">
-                                        <label for="name">If start-up, Name of start-up</label>
+                                        <label for="name">Company Name</label>
                                         <input type="text" aria-required="true" name="startup_name" class="form-control name" >
                                     </div>
                                     <div class="form-group col-md-6">
@@ -606,7 +606,7 @@
                                     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
                                     <div class="g-recaptcha" data-sitekey="6LddCxAUAAAAAKOg0-U6IprqOZ7vTfiMNSyQT2-M"></div>
                                 </div> -->
-                                <button class="btn btn-warning" type="submit" ><i class="fa fa-paper-plane"></i>&nbsp;Submit</button>
+                                <button style="width:100%;" class="btn btn-warning rounded-pill" type="submit" ><i class="fa fa-paper-plane"></i>&nbsp;Request Now</button>
                             </form>
                         </div>
                     </div>
@@ -615,9 +615,9 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <address>
-                                    <strong>15 Regent Street Dar es salaam.</strong><br>
+                                    <strong>74 Ally Sykes Road, Mbezi Beach.</strong><br>
                                     Ennovatehub offices<br>
-                                    <abbr title="Phone">P:</h4>+255 752 817 723
+                                    <abbr title="Phone">P:</h4> +255 752 817 723
                                 </address>
                             </div>
                             <!-- <div class="col-lg-6">
@@ -706,7 +706,7 @@
                         <div class="col-lg-5">
                             <div class="widget">
                                 <div class="widget-title">Plumar</div>
-                                <p class="mb-5">Crafted By Ennovatehub<br> All rights reserved. Copyright © 
+                                <p class="mb-5">Crafted By Ennovateventures<br> All rights reserved. Copyright © 
                                     <script>
                                         var CurrentYear = new Date().getFullYear()
                                         document.write(CurrentYear)
@@ -721,9 +721,7 @@
                                     <div class="widget">
                                         <div class="widget-title">Quick Links</div>
                                         <ul class="list">
-                                            <li><a href="https://ennovatehub.com/">ennovatehub.com</a></li>
-                                            <li><a href="https://ventures.ennovatehub.com/">ventures.ennovatehub.com</a>(for start-ups)</li>
-                                            <li><a href="https://ennovationforchange.org">ennovationforchange.org</a></li>
+                                            <li><a href="http://www.ennovateventures.co">Ennovateventures</a></li>
                                             <li><a href="{% url 'policy' %}">Privacy Policy</a></li>
                                             <li><a href="{% url 'terms' %}">Terms & Conditions</a></li>
                                         </ul>

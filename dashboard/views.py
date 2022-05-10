@@ -504,7 +504,7 @@ def startup_messages(request):
         
 
 
-#talent dash starts here
+#==================================================================talent dash starts here======================================================================
 @login_required(login_url='/auth')
 def talent_dash(request):
     matches = Matches.objects.filter(user=request.user)
