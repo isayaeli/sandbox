@@ -6659,7 +6659,7 @@ body[data-bg-image] { background-attachment: fixed; background-position: top cen
 
 
 @media only screen and (max-width:575px) {
-    .start span{
+    .header span{
         font-size: 12px;
         margin:0;
         padding:0;
