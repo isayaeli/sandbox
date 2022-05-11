@@ -6656,3 +6656,12 @@ body[data-bg-image] { background-attachment: fixed; background-position: top cen
 .card .card-body .wizard { padding: 1rem; }
 
 /*# sourceMappingURL=style.css.map */
+
+
+@media only screen and (max-width:575px) {
+    .start span{
+        font-size: 12px;
+        margin:0;
+        padding:0;
+    }
+}
