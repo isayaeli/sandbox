@@ -441,7 +441,7 @@
                             </div>
 
                             <center style="margin-top: 20px;">
-                                <a data-toggle="modal" data-target="#staticBackdrop112" class="btn btn-dark btn-lg rounded-pill text-center" >Join our talent network here.</a>
+                                <a data-toggle="modal" data-target="#tnet" class="btn btn-dark btn-lg rounded-pill text-center" >Join our talent network here.</a>
                            </center>
                                 
                         </div>
@@ -680,6 +680,144 @@
       </div>
     </div>
   </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="tnet" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel"> Join our watchlist </h5>
+              <a style="font-size: 25px; font-family: bolder;" type="button" class="close font-weight-bold" data-dismiss="modal" aria-label="Close">
+                <span style="font-weight: 900;" aria-hidden="true">&times;</span>
+              </a>
+            </div>
+            <div class="modal-body">
+                <span class="body" ></span>
+                <form  action="" role="form" method="post" id="watch">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="name">First Name</label>
+                            <input type="text" aria-required="true" required id="name" name="fname" class="form-control name" >
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="name">Other Name</label>
+                            <input type="text" aria-required="true" required id="name" name="oname" class="form-control name" >
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="name">Last Name</label>
+                            <input type="text" aria-required="true" required id="name" name="lname" class="form-control name" >
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="email">Email adress</label>
+                            <input type="email" aria-required="true" id="email" required name="email" class="form-control email" >
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="name">LinkedIn Profile </label>
+                            <input type="text" aria-required="true" id="prof" required name="linkedin" class="form-control name" >
+                        </div>
+                        
+                        <div class="form-group col-md-4">
+                            <label for="email">Twitter Profile</label>
+                            <input type="text" aria-required="true" id="loc" required name="twitter" class="form-control email">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="subject">Phone Number</label>
+                            <input type="number" name="phone" id="" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h4>List Your Degree/certifications Below</h4>
+                        <div class="col-md-6 mb-3">
+                            <label for="">Name of Institute</label>
+                            <input type="text" name="institute" class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="">Course/Programme</label>
+                            <input type="text" name="institute" class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="">Graduation Year</label>
+                            <input type="text" name="institute" class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="">Type (Degree/Certification)</label>
+                            <input type="text" name="institute" class="form-control">
+                        </div>
+                        <center><button class=" btn-sm btn btn-warning rounded-pill" ><i class="fa fa-add-crcle" ></i>Add More</button></center>
+                    </div>
+
+                    <div class="row">
+                        <h4>Other Projects</h4>
+                        <div class="col-md-6 mb-3">
+                            <label for="">Name of Project</label>
+                            <input type="text" name="project_name" class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="">Achievements</label>
+                            <input type="text" name="achievements" class="form-control">
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="">Link to Projects</label>
+                            <input type="text" name="link" class="form-control">
+                        </div>
+                        <center><button class=" btn-sm btn btn-warning rounded-pill mb-3" ><i class="fa fa-add" ></i>Add More</button></center>
+                    </div>
+
+                    <div class="row">
+                        <h4>Contact of 2 referees that have worked with you recently </h4>
+                        <div class="col-md-6 mb-3">
+                            <label for="">Name </label>
+                            <input type="text" name="referee_name" class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="">Role And Organization</label>
+                            <input type="text" name="role" class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="">Email</label>
+                            <input type="email" name="ref_email" class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="">Phone</label>
+                            <input type="number" name="ref_phone" class="form-control">
+                        </div>
+                        <center class="mt-3" ><button class=" btn-sm btn btn-warning rounded-pill" ><i class="fa fa-plus-crcle" ></i>Add More</button></center>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="">Attach Cv/Professional Bio </label>
+                            <input type="file" name="cv" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="">Attach Cv/Professional Bio </label>
+                            <select name="details" id="" class="form-control" ></select>
+                        </div>
+                    </div>
+
+                    <button id="submit" style="width:100%;" class="btn btn-warning rounded-pill mt-3" type="submit" >
+                        <i class="fa fa-paper-plane"></i>&nbsp;Submit 
+                        <img id="img" style="height: 30px; border-radius:20px; margin-left: 20px; display: none;" src="{% static 'assets/img/balls.gif' %}" alt="">
+                    </button>
+                </form>
+            </div>
+            <div style="display: none;" class="modal-footer">
+              <button style="width: 50%; margin-right: 25%;" type="button" id="close" class="btn btn-dark rounded-pill" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
 
