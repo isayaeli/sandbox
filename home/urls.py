@@ -11,7 +11,8 @@ urlpatterns = [
     path('lms', views.lms_home, name='lms'),
     path('terms', views.terms_conditions, name='terms'),
     path('policy', views.privacy_policy, name='policy'),
-    path('watchlist', views.watchlist, name="watchlist")
+    path('watchlist', views.watchlist, name="watchlist"),
+    path('how-it-works', views.how_it_works, name="how_it_works")
     
 ]
 

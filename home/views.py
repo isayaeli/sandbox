@@ -78,3 +78,7 @@ def terms_conditions(request):
 
 def privacy_policy(request):
     return render(request, 'home/privacy_policy.html')
+
+
+def how_it_works(request):
+    return render(request, 'home/how_it_works.html')
