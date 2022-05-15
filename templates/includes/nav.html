@@ -19,8 +19,7 @@
                                 <ul>
                                     <li><a href="{% url 'home' %}">Home </a></li>
                                     <li><a href="{% url 'opportunity' %}">Opportunities </a></li>
-                                    <li><a href="{% url 'talents' %}">Talents </a></li>
-                                    <li><a href="{% url 'startups' %}">Startups </a></li>
+                                    <li><a href="{% url 'startups' %}">Company</a></li>
                                     <li><a href="{% url 'about' %}">About us</a></li>
                                     <li><a href="{% url 'contacts' %}">Contacts</a></li>
                                     <!-- <li><a href="#">Blog </a></li> -->
@@ -43,12 +42,9 @@
                                             <a href="{% url 'talent_dash' %}"><span>Dashboard</span></a>
                                     {% else %}
                                     <div class="btn-group">
-                                        <button type="button" class=" font-weight-bold btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                            Sign In
-                                        </button>
+                                        <a class="btn btn-warning font-weight-bold" href="{% url 'login' %}">Sign In</a>
                                         <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="{% url 'login' %}">As a Student</a>
-                                        <a class="dropdown-item" href="{% url 'login' %}">As a Company</a>
+                                       
                                         <!-- <a class="dropdown-item" href="#">Something else here</a> -->
                                         <!-- <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="#">Separated link</a>-->
@@ -59,12 +55,12 @@
                                     <a class="btn btn-warning ml-3 font-weight-bold "  href="{% url 'logout' %}">Logout</a>
                                     {% else %}
                                     <div class="btn-group ml-3">
-                                        <button type="button" class=" font-weight-bold btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                            Sign Up
-                                        </button>
+                                        <!-- <button type="button" class=" font-weight-bold btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                          Hire
+                                        </button> -->
+                                        <a class="btn btn-warning font-weight-bold" href="{% url 'register' %}">Hire</a>
                                         <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="{% url 'register' %}">As a Student</a>
-                                        <a class="dropdown-item" href="{% url 'register' %}">As a Company</a>
+                                       
                                         <!-- <a class="dropdown-item" href="#">Something else here</a> -->
                                         <!-- <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="#">Separated link</a>-->
