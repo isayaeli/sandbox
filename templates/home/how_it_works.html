@@ -3,13 +3,42 @@
 {% load static %}
 
 {% block title %}
-    <title>Plumar | About</title>
+    <title>Plumar | how it works</title>
 {% endblock title %}
 
 {% block header %}
 {% endblock header %}
 
 {% block contents %}
+<style>
+    @media only screen and (max-width:575px) {
+    .header span{
+        font-size: 8px;
+        margin:0;
+        padding:0;
+        height: 120px;
+    }
+    .header p{
+        margin-top: -50px;
+    }
+    .box{
+        margin-bottom: 20px;
+    }
+    .box2 {
+       text-align: center;
+    }
+    .box3 {
+       text-align: start;
+      
+    }
+    .box4{
+       text-align: start;
+    }
+    .signup{
+        margin-bottom: 100px;
+    }
+}
+</style>
 {% include 'includes/nav.html' %}
         <!-- Breadcrumb Section Start -->
         <div class="breadcrumb-section section pt-60 pt-sm-50 pt-xs-40 pb-60 pb-sm-50 pb-xs-40">
@@ -41,46 +70,46 @@
                     </h2>
                 </div>
                 <!-- <div style="height:40px;" ></div> -->
-                <p class="text-max-800 text mb-4 text-center" style=" font-size:18px; margin-top:50px; letter-spacing: 1px 0px;">
+                <p class="text-max-800 text mb-4 text-center headline" style=" font-size:18px; margin-top:50px; letter-spacing: 1px 0px;">
                     Plumar offers a tech talents platform to explore exciting jobs in tech. 
                     If you are looking to start or grow your career in tech, then Plumar is your plug to a world of exciting tech opportunities.
                     
                 </p>
                 <div class="row">
                    
-                    <div class="col-md-6 mb-5">
+                    <div class="col-md-6 mb-5 box signup">
                         <div style="border: 3px solid #ffbb00; border-top-color: black ; border-radius: 10px; ">
                             <div class="bg-warning text-center " style=" margin-top: 20px; margin-bottom: 10px; margin-left: 40%; margin-right: 50%; height: 80px; width: 80px; border-radius: 50%;">
                                 <a href='{% url "auth" %}' > <i style="margin-top: 30px; font-size: 20px;" class="fas fa-sign-in-alt text-black" ></i></a>
                             </div>
-                            <a  style="margin-left:40%;" href="{% url 'auth' %}" > <h5 class="font-weight-bold text-dark text-center" ><b>SIGN UP</b></h5></a>
+                            <a class="box1"  style="margin-left:40%;" href="{% url 'auth' %}" > <h5 class="font-weight-bold text-dark text-center" ><b>SIGN UP</b></h5></a>
                             <p   class=" mt-3 mb-3 text-center text-dark" > <b class=" text-dark" >Sign up here on our talent network. <br> Fill out the form and the required <br> attachments. </b></p>
                         </div>
                     </div>
-                    <div class="col-md-6 mb-5">
+                    <div class="col-md-6 mb-5 box mt-4">
                         <div style="border: 3px solid #ffbb00; border-top-color: black ; border-radius: 10px; ">
                             <div class="bg-warning text-center " style=" margin-top: 20px; margin-bottom: 10px; margin-left: 40%; margin-right: 50%; height: 80px; width: 80px; border-radius: 50%;">
                                 <a type="button"><i style="margin-top: 30px; font-size: 20px;" class="fa fa-file text-black" ></i></a>
                             </div>
-                            <a style="margin-left:18%;" type="button"><h5 class="font-weight-bold text-dark " ><b>SKILLS AND EXPERIENCE REVIEW.</b></h5></a>
+                            <a class="box2" style="margin-left:18%;" type="button"><h5 class="font-weight-bold text-dark " ><b>SKILLS AND EXPERIENCE REVIEW.</b></h5></a>
                             <p class="mt-3 mb-3 text-center text-dark" ><b>Our team will review your skills and experience. <br> If you have the minimum requisite skills, then our team will send you a link, to create your talent account on Plumar</b></p>
                         </div>
                     </div>
-                    <div class="col-md-6 mb-5 mt-4">
+                    <div class="col-md-6 mb-5 mt-4 box">
                         <div style="border: 3px solid #ffbb00; border-top-color: black ; border-radius: 10px; ">
                             <div class="bg-warning text-center " style=" margin-top: 20px; margin-bottom: 10px; margin-left: 40%; margin-right: 50%; height: 80px; width: 80px; border-radius: 50%;">
                                 <a  style="margin-left:18%;" type="button" ><i style="margin-top: 30px; font-size: 20px;" class="fa fa-briefcase text-black" ></i></a>
                             </div>
-                            <a  style="margin-left:35%;" type="button" ><h5 class="font-weight-bold text-dark" ><b>SIGN UP LINK</b></h5></a>
+                            <a class="box3"  style="margin-left:35%;" type="button" ><h5 class="font-weight-bold text-dark" ><b>SIGN UP LINK</b></h5></a>
                             <p class="mt-3 mb-3 text-center text-dark" ><b>Use the link to create your talent profile on Plumar and. <br> get started with exploring amazing. <br> tech job opportunities globally.</b></p>
                         </div>
                     </div>
-                    <div class="col-md-6 mb-5 mt-4 ">
+                    <div class="col-md-6 mb-5 mt-4  box">
                         <div style="border: 3px solid #ffbb00; border-top-color: black ; border-radius: 10px; ">
                             <div class="bg-warning text-center " style=" margin-top: 20px; margin-bottom: 10px; margin-left: 40%; margin-right: 50%; height: 80px; width: 80px; border-radius: 50%;">
                                 <a type="button" ><i style="margin-top: 30px; font-size: 20px;" class="fa fa-briefcase text-black" ></i></a>
                             </div>
-                            <a  style="margin-left:25%;" type="button" ><h5 class="font-weight-bold text-dark" ><b>IMPROVE YOUR SKILLS</b></h5></a>
+                            <a class="box4"  style="margin-left:25%;" type="button" ><h5 class="font-weight-bold text-dark" ><b>IMPROVE YOUR SKILLS</b></h5></a>
                             <p class="mt-3 mb-3 text-center text-dark" ><b>Plumar also offers upskilling support to all our network members. So from time to time, we help our network members to improve their skills and then help them qualify to create talent accounts on Plumar.</b></p>
                         </div>
                     </div>
