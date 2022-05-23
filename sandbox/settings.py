@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+from decouple import config
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -103,8 +103,8 @@ TEMPLATES = [
 
 
 
-RAVE_PUBLIC_KEY = 'FLWPUBK-beb8a5a0af5c4343b38e5831d6424963-X'
-RAVE_SECRET_KEY = 'FLWSECK-e64b791b6a400370ff9e5a05f91a65cb-X'
+RAVE_PUBLIC_KEY = config('RAVE_PUBLIC_KEY')
+RAVE_SECRET_KEY = config('RAVE_SECRET_KEY')
 
 
 # AUTHENTICATION_BACKENDS = (
