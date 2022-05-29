@@ -12,7 +12,8 @@ urlpatterns = [
     path('terms', views.terms_conditions, name='terms'),
     path('policy', views.privacy_policy, name='policy'),
     path('watchlist', views.watchlist, name="watchlist"),
-    path('how-it-works', views.how_it_works, name="how_it_works")
+    path('how-it-works', views.how_it_works, name="how_it_works"),
+    path('post-project', views.post_project, name="post_project")
     
 ]
 

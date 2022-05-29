@@ -1,4 +1,5 @@
 import json
+from unicodedata import name
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from opportunity.models import Opportunity
@@ -82,3 +83,7 @@ def privacy_policy(request):
 
 def how_it_works(request):
     return render(request, 'home/how_it_works.html')
+
+
+def post_project(request):
+    return render(request, 'home/post_project.html')

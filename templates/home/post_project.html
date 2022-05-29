@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    <title>Plumar | About</title>
+{% endblock title %}
+
+{% block header %}
+{% endblock header %}
+
+{% block contents %}
+{% include 'includes/nav.html' %}
+        <!-- Breadcrumb Section Start -->
+        <div class="breadcrumb-section section pt-60 pt-sm-50 pt-xs-40 pb-30 pb-sm-20 pb-xs-20">
+            <div class="container">
+                <div class="row mb-n4">
+                    <div class="col-12">
+                        <div class="page-breadcrumb-content">
+                            <ul class="page-breadcrumb">
+                                <li><a href="{% url 'home' %}">Home</a></li>
+                                <li>About us</li>
+                            </ul>
+                            <h1>Plumar Crowdsource</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Breadcrumb Section Start -->
+
+        <!-- About Content Section Start -->
+        <div class="about-content-section section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                   
+                        <div class="about-content">
+                            <p> 
+                                We all have those moment when you dare need to get a project done within a tight timeline with very
+                                limited resources to hire talents or put a team together real quick. It’s always one of those days we
+                                want to avoid.
+                                We understand that running a business is hard and its even harder when closing deals and acquiring
+                                customers becomes a luxury because of limited resources and tight schedules. With a global pool of tech
+                                talents, Plumar Crowdsource offers you a platform to get your project done within your budget and
+                                preferred timeline.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- About Content Section start -->
+        <div class="about-content-section section mt-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div>
+                            <b>How it works</b>
+                        </div>
+                        <div class="about-content">
+                            <ol>
+                                <li>Submit your project requirements and propose your budget. Agree to Plumar Crowdsourceterms and conditions</li>
+                                <li>Plumar will review the viability of your project requirement and timeline.</li>
+                                <li>Your project will be matched to relevant team of tech talents to work on it within your stipulated timeline </li>
+                                <li>Schedule 1st and 2nd sprint demos with the team working on you project to review work done and test</li>
+                                <li>When the project is completed according to your requirements, you will be prompt for payment before final presentation and handover of the project to you</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About Content Section End -->
+
+
+        <!-- form Content Section start -->
+        <div class="about-content-section section mt-3">
+        <div class="container">
+            <div class="row">
+                <form action=""method="post">
+                    <div class="row">
+                        <div class="col-md-4 mb-50">
+                            <input style="height: 50px;" type="text" name="full_name" class="form-control" placeholder="Full Name">
+                        </div>
+                        <div class="col-md-4 mb-50">
+                            <input style="height: 50px;" type="text" name="company" class="form-control"placeholder="Company/Organization">
+                        </div>
+                        <div class="col-md-4 mb-50">
+                            <input style="height: 50px;" type="text" name="position" class="form-control" placeholder="Your Postion" >
+                        </div>
+                        <div class="col-md-4 mb-50 ">
+                            <input style="height: 50px;" type="number" name="phone" class="form-control" placeholder="Your Phone Number" >
+                        </div>
+                        <div class="col-md-4 mb-50 ">
+                            <input style="height: 50px;" type="email" name="email" class="form-control" placeholder="Email" >
+                        </div>
+                        <div class="col-md-4 mb-50">
+                            <input style="height: 50px;" type="text" name="country" class="form-control" placeholder="Country/City" >
+                        </div>
+
+                        <div class="col-md-4 mb-50 ">
+                            <textarea class="form-control" name="details" id="" cols="30" rows="5" placeholder="Describe the project (Provide enough details to guide the team)" ></textarea>
+                        </div>
+                        <div class="col-md-4 mb-50">
+                           <textarea class="form-control" name="expectations" id="" cols="30" rows="5" placeholder="What do you hope to achieve with the project? (Work to be done  by the project or solution)" ></textarea>
+                        </div>
+                        <div class="col-md-4 mb-50">
+                            <textarea class="form-control" name="expectations" id="" cols="30" rows="5" placeholder="What are the key features of the project?" ></textarea>
+                         </div>
+                         <div class="col-md-4 mb-50">
+                            <label for="design">What do you hope to achieve with the project? (Work to be done  by the project or solution)</label>
+                            <input style="display: none;"  id="uploadfile" class="form-control" id="image" type="file" name="image" 
+                            onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" required="required">
+                            <embed  src=src id="blah"  style="width:100%; display:none;" />
+                            <center><a id="btnfile" class="btn btn-warning rounded-pill mt-2" ><i class="fa fa-upload" ></i> Upload  from your device</a></center>
+                         </div>
+                         <div class="col-md-4 mb-50">
+                            <label for="design">What do you hope to achieve with the project? (Work to be done  by the project or solution)</label>
+                            <input style="display: none;"  id="uploadfile2" class="form-control" id="image2" type="file" name="image" 
+                            onchange="document.getElementById('blah2').src = window.URL.createObjectURL(this.files[0])" required="required">
+                            <embed src=src id="blah2"  style="width:100%; display:none;" />
+                            <center><a id="btnfile2" class="btn btn-warning rounded-pill mt-2" > <i class="fa fa-upload" ></i>Upload from your device</a></center>
+                         </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- form Content Section End -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $("#btnfile").click(function () {
+    $("#uploadfile").click();
+    $('#blah').css('display','block')
+    });
+
+    $("#btnfile2").click(function () {
+    $("#uploadfile2").click();
+    $('#blah2').css('display','block')
+    });
+
+</script>    
+
+     
+{% endblock contents %}
