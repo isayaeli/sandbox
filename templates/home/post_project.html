@@ -109,21 +109,37 @@
                         <div class="col-md-4 mb-50">
                             <textarea class="form-control" name="expectations" id="" cols="30" rows="5" placeholder="What are the key features of the project?" ></textarea>
                          </div>
-                         <div class="col-md-4 mb-50">
-                            <label for="design">What do you hope to achieve with the project? (Work to be done  by the project or solution)</label>
-                            <input style="display: none;"  id="uploadfile" class="form-control" id="image" type="file" name="image" 
+                         <div class="col-md-6 mb-50">
+                            <label for="design">Do you have any document or design about the project? Upload here</label>
+                            <input style="display: none;"  id="uploadfile" class="form-control" id="image" type="file" name="design" 
                             onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" required="required">
                             <embed  src=src id="blah"  style="width:100%; display:none;" />
                             <center><a id="btnfile" class="btn btn-warning rounded-pill mt-2" ><i class="fa fa-upload" ></i> Upload  from your device</a></center>
                          </div>
-                         <div class="col-md-4 mb-50">
-                            <label for="design">What do you hope to achieve with the project? (Work to be done  by the project or solution)</label>
-                            <input style="display: none;"  id="uploadfile2" class="form-control" id="image2" type="file" name="image" 
+                         <div class="col-md-6 mb-50">
+                            <label for="design">You have any Mockup/UI you’d like to share? Upload here</label>
+                            <input style="display: none;"  id="uploadfile2" class="form-control" id="image2" type="file" name="mockup" 
                             onchange="document.getElementById('blah2').src = window.URL.createObjectURL(this.files[0])" required="required">
                             <embed src=src id="blah2"  style="width:100%; display:none;" />
                             <center><a id="btnfile2" class="btn btn-warning rounded-pill mt-2" > <i class="fa fa-upload" ></i>Upload from your device</a></center>
                          </div>
+                         <div class="col-md-4 mb-50">
+                             <label for="">What is your budget for this project? (Project with fair market budgets gets matched faster)</label>
+                             <input class="form-control" style="height: 50px;;" type="text" name="deliverlytime" placeholder="Project budget">
+                         </div>
+                         <div class="col-md-4 mb-50 ">
+                            <label for="design">What is your budget for this project? (Project with fair market budgets gets matched faster)</label>
+                             <input style="height: 50px;;" class="form-control"  type="text" name="" id="" placeholder="Expected delivery timeline">
+                         </div>
+                         <div class="col-md-4 mb-3 ">
+                             <textarea class="form-control" name="moreinfo" id="" cols="30" rows="5" placeholder="Any other information you’d like to share about the project?" ></textarea>
+                         </div>
+                         
                     </div>
+                    <center>
+                        <button style="width:60%;" type="submit" class="btn btn-warning btn-lg rounded-pill" >Submit</button>
+                        <p class="mt-20 mb-30" >By submitting, you agree to the terms and conditions of Plumar Crowdsource</p>
+                    </center>
                 </form>
             </div>
         </div>

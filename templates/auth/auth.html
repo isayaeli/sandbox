@@ -71,7 +71,7 @@
                                     {% if request.path == '/login' %}
                                     <li><a class="active show" data-toggle="tab" href="#login">Login</a></li>
                                     <li><a data-toggle="tab" href="#register">Register</a></li>
-                                    {% elif request.path == '/register' %}
+                                    {% elif request.path == '/register' or request.path == '/auth' %}
                                     <li><a data-toggle="tab" href="#login">Login</a></li>
                                     <li><a  class="active show" data-toggle="tab" href="#register">Register</a></li>
                                     {% endif %}
@@ -105,7 +105,7 @@
                                  
                                     </div>
                                 </div>
-                                <div id="register" class="tab-pane fade {% if request.path == '/register' %} active{% endif %}">
+                                <div id="register" class="tab-pane fade {% if request.path == '/register' or request.path == '/auth' %} active{% endif %}">
                                     <div class="login-register-form">
                                         <form action="{% url 'register' %}" method="post">
                                             {% csrf_token %}
